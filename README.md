@@ -172,7 +172,6 @@ psql --version
    - 端口：`5432`
 
 ### 第 4 步：获取币安 API 密钥
-
 #### 虚拟盘（推荐新手先使用）：
 
 1. 访问 [币安虚拟盘](https://testnet.binancefuture.com/)
@@ -188,7 +187,7 @@ psql --version
 1. 登录 [币安官网](https://www.binance.com/)
 2. 账户 → API 管理
 3. 创建 API Key
-4. **重要：配置 API 权限**
+4. **重要：配置 API 权限**（若不配置会报错）
    - ✅ 启用现货和杠杆交易
    - ✅ 启用期货交易
    - ✅ 启用读取权限
@@ -267,12 +266,19 @@ npm install
    # 格式：postgresql://用户名:密码@主机:端口/数据库名
    DATABASE_URL="postgresql://trading_user:(your_secure_password)@localhost:5432/nof1"
    #(your_secure_password)里面填入密码(去掉括号，括号是为好看),(nof1)可以替换成为你的数据库名称
-   # 如果使用 postgres 用户：
-   # DATABASE_URL="postgresql://postgres:(your_postgres_password)@localhost:5432/nof1"
+  
+   # 代理配置（在中国大陆访问需要代理并且需要非中非美ip）
+   # ==========================================
+   # 如果需要通过代理访问币安 API（calsh需用端口7890，V2Ray端口10809）
+   BINANCE_HTTP_PROXY=http://127.0.0.1:7890
+   # 如果不需要代理，设置为 true
+   # BINANCE_DISABLE_PROXY=true
 
+  
    # ==========================================
    # 币安 API 配置（重要更新！）
    # ==========================================
+
    
    # 虚拟盘 API 配置
    BINANCE_TESTNET_API_KEY="你的虚拟盘API密钥"
@@ -284,19 +290,21 @@ npm install
    BINANCE_LIVE_API_SECRET="你的实盘API密钥Secret"
    BINANCE_LIVE_BASE_URL="https://fapi.binance.com"
 
+   #请求超时时间（建议不动，已经过测试）
+   BINANCE_FETCH_TIMEOUT_MS="25000"
+   
+
    # 交易模式：dry-run（虚拟盘）或 live（实盘）
    # 💡 只需修改这一个参数即可切换模式！系统会自动使用对应的 API 配置
    TRADING_MODE="dry-run"
    # 如果改成live就是实盘操控
+ 
+   # Risk Control Parameters (风险控制，适用于虚拟盘和实盘 / Apply to both virtual and live trading，可自行设定)
+   MAX_POSITION_SIZE_USDT=5000  # 最大持仓Maximum position size in USDT (increased for aggressive strategy)
+   MAX_LEVERAGE=30  # 最大杠杆Maximum allowed leverage (increased to 30x for high-yield strategy)
+   DAILY_LOSS_LIMIT_PERCENT=20  # 最大日损失限制Daily loss limit as percentage of capital (20% for aggressive trading)
 
-   # ==========================================
-   # 代理配置（可选）
-   # ==========================================
-   # 如果需要通过代理访问币安 API（calsh需用端口7890）
-   BINANCE_HTTP_PROXY=http://127.0.0.1:7890
-   # 如果不需要代理，设置为 true（在中国大陆访问需要代理并且需要非中非美ip ）
-   # BINANCE_DISABLE_PROXY=true
-
+ 
    # ==========================================
    # AI 模型配置
    # ==========================================
@@ -307,17 +315,9 @@ npm install
    # 应用配置（必需）
    # ==========================================
    NEXT_PUBLIC_URL="http://localhost:3000"
-   CRON_SECRET_KEY="abc123secretkey_change_this_in_production"
+   CRON_SECRET_KEY="secretkey_change_this_in_production"
 
 
-   # ==========================================
-   # 交易配置
-   # ==========================================
- 
-   # Risk Control Parameters (适用于虚拟盘和实盘 / Apply to both virtual and live trading，可自行设定)
-MAX_POSITION_SIZE_USDT=5000  # 最大持仓Maximum position size in USDT (increased for aggressive strategy)
-MAX_LEVERAGE=30  # 最大杠杆Maximum allowed leverage (increased to 30x for high-yield strategy)
-DAILY_LOSS_LIMIT_PERCENT=20  # 最大日损失限制Daily loss limit as percentage of capital (20% for aggressive trading)
 
 
 
@@ -330,14 +330,12 @@ npx prisma generate
 # 创建数据库表结构
 npx prisma db push
 
-# （可选）查看数据库
-npx prisma studio
-```
+
 
 **如果遇到数据库连接错误**：
 - 检查 DATABASE_URL 是否正确
-- 确认 PostgreSQL 服务是否运行
-- 验证数据库密码是否正确
+- 确认 PostgreSQL 服务是否运行（若打开电脑后发现pgAdmin的数据库前无法连接（红色叉），需要打开服务-postgresql右键启动）
+- 验证数据库密码和数据库名称是否正确
 
 ### 第 10 步：启动项目
 
@@ -357,417 +355,16 @@ pnpm dev
 - 系统会自动开始执行 AI 交易决策（每 3 分钟一次）
 - 日志会显示：`🎮 Trading Mode: DRY-RUN (Virtual Trading)`
 
-**关于 CRON_SECRET_KEY**：
-- ✅ **必需配置**：用于保护定时任务 API 端点
-- 🔐 默认值：`abc123secretkey_change_this_in_production`
-- ⚠️ 生产环境请更换为强密码（至少 32 个字符）
-- 💡 作用：防止未授权访问 `/api/cron/*` 端点
+**若要切换模拟盘和实盘策略**：
+- 只需在.env中配置好两种API之后，将TRADING_MODE live和dry-run对调即可
 
----
 
-## 📖 详细使用指南
-
-### 🎯 交易模式快速切换（重要更新！）
-
-系统现在支持一键切换交易模式，无需手动修改多个配置！
-
-#### 配置说明：
-
-**准备工作**：在 `.env` 中配置两套 API 密钥
-```env
-# 虚拟盘 API（测试用）
-BINANCE_TESTNET_API_KEY="虚拟盘密钥"
-BINANCE_TESTNET_API_SECRET="虚拟盘Secret"
-
-# 实盘 API（真实交易）
-BINANCE_LIVE_API_KEY="实盘密钥"
-BINANCE_LIVE_API_SECRET="实盘Secret"
-```
-
-#### 切换模式：只需修改一个参数！
-
-**虚拟盘模式（推荐新手）**：
-```env
-TRADING_MODE="dry-run"
-```
-- ✅ 自动使用 `BINANCE_TESTNET_*` 配置
-- ✅ 自动连接 `https://demo-fapi.binance.com`
-- ✅ 使用虚拟资金，安全测试
-- ✅ 日志显示：`🎮 Trading Mode: DRY-RUN (Virtual Trading)`
-
-**实盘模式（谨慎使用）**：
-```env
-TRADING_MODE="live"
-```
-- ⚠️ 自动使用 `BINANCE_LIVE_*` 配置
-- ⚠️ 自动连接 `https://fapi.binance.com`
-- ⚠️ 涉及真实资金，请充分测试后使用
-- ⚠️ 日志显示：`⚠️ Trading Mode: LIVE (Real Money Trading)`
-
-**切换后记得重启应用**：
-```bash
-# 停止当前运行（Ctrl+C）
-# 重新启动
-npm run dev
-```
-
-### 模拟交易（推荐新手）
-
-模拟交易使用虚拟资金，不会有任何真实损失，非常适合测试策略。
-
-#### 配置步骤：
-
-1. **确认 `.env` 配置**
-   ```env
-   TRADING_MODE="dry-run"
-   BINANCE_TESTNET_API_KEY="虚拟盘的API密钥"
-   BINANCE_TESTNET_API_SECRET="虚拟盘的API密钥Secret"
-   ```
-
-2. **启动应用**
-   ```bash
-   npm run dev
-   ```
-
-3. **观察日志**
-   ```
-   🎮 Trading Mode: DRY-RUN (Virtual Trading)
-   - Using Testnet API: https://demo-fapi.binance.com
-   🤖 Mode: 🎮 VIRTUAL
-   💰 Starting with virtual balance: $10,000
-   ```
-
-4. **查看交易**
-   - 打开浏览器访问 http://localhost:3000
-   - 查看"已完成交易"标签页
-   - 监控账户余额变化
-
-### 实盘交易
-
-⚠️ **重要警告**：
-- 实盘交易涉及真实资金，可能造成损失
-- 强烈建议先在虚拟盘充分测试
-- 建议从小额资金开始（如 $100-$500）
-- 定期监控系统运行状态
-
-#### 切换步骤：
-
-1. **修改 `.env` 配置**
-   ```env
-   TRADING_MODE="live"
-   BINANCE_LIVE_API_KEY="实盘API密钥"
-   BINANCE_LIVE_API_SECRET="实盘API密钥Secret"
-   ```
-
-2. **验证 API 权限**
-   - 确认 API Key 已启用期货交易权限
-   - 建议设置 IP 白名单
-   - 不要启用提现权限
-
-3. **重启应用**
-   ```bash
-   # 停止当前运行（Ctrl+C）
-   # 重新启动
-   npm run dev
-   ```
-
-4. **确认模式**
-   ```
-   ⚠️  Trading Mode: LIVE (Real Money Trading)
-   - Using Live API: https://fapi.binance.com
-   💰 Current balance: $XXX.XX
-- 建议从小额资金开始（如 $100-$500）
-- 定期监控系统运行状态
-
-#### 切换步骤：
-
-1. **修改 `.env` 配置**
-   ```env
-   TRADING_MODE=live
-   BINANCE_FAPI_BASE_URL=https://fapi.binance.com
-   BINANCE_API_KEY=实盘API密钥
-   BINANCE_API_SECRET=实盘API密钥Secret
-   ```
-
-2. **验证 API 权限**
-   - 确认 API Key 已启用期货交易权限
-   - 建议设置 IP 白名单
-   - 不要启用提现权限
-
-3. **重启应用**
-   ```bash
-   # 停止当前运行（Ctrl+C）
-   # 重新启动
-   npm run dev
-   ```
-
-4. **确认模式**
-   ```
-   🤖 Mode: ⚠️ LIVE (REAL MONEY)
-   💰 Current balance: $XXX.XX
-   ```
-
-### 自定义交易策略
-
-编辑 `trading-style-config.json` 文件：
-
-```json
-{
-  "riskTolerance": "aggressive",  // 风险容忍度: conservative, moderate, aggressive
-  "positionSizing": {
-    "maxPercentPerTrade": 25,     // 单笔最大仓位: 5-30%
-    "scaleWithWinRate": true      // 根据胜率动态调整
-  },
-  "leveragePreference": {
-    "maxLeverage": 30,             // 最大杠杆: 1-30
-    "preferredLeverage": 12        // 偏好杠杆: 5-20
-  },
-  "exitStrategy": {
-    "profitTarget": 20,            // 止盈目标: 10-50%
-    "stopLoss": 3.5,               // 止损: 2-10%
-    "timeHorizon": "short-term"    // 时间范围: short-term, medium-term, long-term
-  },
-  "technicalIndicators": ["RSI", "MACD", "EMA", "Volume"],
-  "userInstruction": "高风险高收益策略，严格止损"
-}
-```
-
-### 监控和管理
-
-#### 查看实时数据
-- **首页**：实时价格、账户余额、收益率
-- **图表**：历史收益曲线
-- **交易记录**：查看所有交易历史
-- **AI 对话**：查看 AI 决策过程
-
-#### 手动管理持仓
-```bash
-# 查看当前持仓
-npm run check:positions
-
-# 手动设置止盈止损
-npm run manage:sltp
-```
-
-#### 查看日志
-```bash
-# 查看运行日志
-# 日志会显示所有交易决策和执行情况
-```
-
----
-
-## 🔧 高级配置
-
-### 代理配置
-
-如果你在中国大陆，可能需要配置代理访问币安 API。
-
-#### 使用 Clash/V2Ray：
-
-1. 启动代理软件
-2. 查看本地代理端口（通常是 7890）
-3. 配置 `.env`：
-   ```env
-   BINANCE_HTTP_PROXY=http://127.0.0.1:7890
-   ```
-
-#### 禁用代理：
-```env
-BINANCE_DISABLE_PROXY=true
-```
-
-### 定时任务配置
-
-系统默认每 3 分钟执行一次交易决策。
-
-#### CRON_SECRET_KEY 说明
-
-**什么是 CRON_SECRET_KEY？**
-- 🔐 用于保护定时任务 API 端点（`/api/cron/*`）
-- 🛡️ 防止未授权访问和恶意触发交易
-- ✅ 开发模式和生产模式都必须设置
-
-**配置方法：**
-```env
-# .env 文件
-CRON_SECRET_KEY="abc123secretkey_change_this_in_production"
-```
-
-**安全建议：**
-- ⚠️ 生产环境请使用强密码（至少 32 个字符）
-- 🔄 定期更换密钥
-- 🚫 不要将密钥提交到代码仓库
-- 💡 生成强密码：`openssl rand -base64 32`
-
-**如何工作：**
-1. `cron.ts` 使用密钥生成 JWT 令牌
-2. 定时任务调用 API 时携带令牌
-3. API 端点验证令牌有效性
-4. 验证通过后执行交易逻辑
-
-#### 修改执行频率：
-
-编辑 `cron.ts` 中修改：
-```typescript
-// 交易决策（每 3 分钟）
-cron.schedule('*/3 * * * *', async () => {
-  await runChatInterval();
-});
-
-// 指标收集（每 30 秒）
-cron.schedule('*/30 * * * * *', async () => {
-  await runMetricsInterval();
-});
-
-// 其他示例：
-// '*/5 * * * *'  - 每 5 分钟
-// '*/10 * * * *' - 每 10 分钟
-// '0 * * * *'    - 每小时
-// '0 0 * * *'    - 每天凌晨
-```
-
-**Cron 表达式格式：**
-```
-┌────────────── 秒（可选，0-59）
-│ ┌──────────── 分钟（0-59）
-│ │ ┌────────── 小时（0-23）
-│ │ │ ┌──────── 日期（1-31）
-│ │ │ │ ┌────── 月份（1-12）
-│ │ │ │ │ ┌──── 星期（0-7，0 和 7 都表示周日）
-│ │ │ │ │ │
-* * * * * *
-```
-
-### 风险控制参数
-
-在 `lib/ai/prompt.ts` 中调整核心风险参数：
-
-```typescript
-// 最大杠杆
-const MAX_LEVERAGE = 30;
-
-// 单笔最大风险
-const MAX_RISK_PER_TRADE = 0.015; // 1.5%
-
-// 单一币种最大仓位
-const MAX_EXPOSURE_PER_SYMBOL = 0.40; // 40%
-```
 
 ### 数据库管理
 
-#### 查看数据库：
-```bash
-npx prisma studio
-```
-浏览器会自动打开 http://localhost:5555
-
-#### 备份数据库：
-```bash
-# Windows
-pg_dump -U trading_user -d trading_db > backup.sql
-
-# macOS/Linux
-sudo -u postgres pg_dump trading_db > backup.sql
-```
-
-#### 恢复数据库：
-```bash
-# Windows
-psql -U trading_user -d trading_db < backup.sql
-
-# macOS/Linux
-sudo -u postgres psql trading_db < backup.sql
-```
-
-#### 清空数据（重新开始）：
-```bash
-npx prisma db push --force-reset
-```
-
----
-
-## 🏗️ 项目结构详解
-
-```
-open-nof1.ai/
-├── app/                          # Next.js App Router
-│   ├── api/                      # API 路由
-│   │   ├── account/              # 账户相关 API
-│   │   │   └── diagnose/         # 诊断接口
-│   │   ├── activity/             # 交易活动数据
-│   │   │   └── route.ts          # 获取交易记录和持仓
-│   │   ├── ai-chat/              # AI 聊天接口
-│   │   │   └── route.ts          # 与 AI 对话
-│   │   ├── cron/                 # 定时任务
-│   │   │   ├── 3-minutes-run-interval/  # 3 分钟执行一次
-│   │   │   └── dev-seed/         # 开发数据生成
-│   │   ├── metrics/              # 性能指标
-│   │   │   └── route.ts          # 获取图表数据
-│   │   └── pricing/              # 市场价格数据
-│   │       └── route.ts          # 获取实时价格
-│   ├── globals.css               # 全局样式
-│   ├── layout.tsx                # 应用布局
-│   └── page.tsx                  # 主页面
-│
-├── components/                   # React 组件
-│   ├── ui/                       # UI 基础组件
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   ├── tabs.tsx
-│   │   └── ...
-│   ├── ai-chat.tsx               # AI 聊天组件
-│   ├── animated-number.tsx       # 数字动画组件
-│   ├── chart.tsx                 # 图表组件
-│   ├── crypto-card.tsx           # 加密货币卡片
-│   ├── goal-progress-panel.tsx   # 目标进度面板
-│   ├── metrics-chart.tsx         # 指标图表
-│   └── models-view.tsx           # 模型视图
-│
-├── lib/                          # 核心业务逻辑
-│   ├── ai/                       # AI 相关
-│   │   ├── model.ts              # AI 模型配置
-│   │   ├── prompt.ts             # 提示词生成
-│   │   ├── run.ts                # AI 执行逻辑
-│   │   └── learning-feedback.ts  # 学习反馈机制
-│   │
-│   ├── trading/                  # 交易核心逻辑
-│   │   ├── binance-official.ts   # 币安官方 SDK 封装
-│   │   ├── buy.ts                # 买入逻辑
-│   │   ├── sell.ts               # 卖出逻辑
-│   │   ├── stop-loss-take-profit-official.ts  # 止盈止损管理
-│   │   ├── current-market-state.ts  # 市场状态获取
-│   │   ├── account-information-and-performance.ts  # 账户信息
-│   │   └── types.ts              # 交易相关类型定义
-│   │
-│   ├── types/                    # 全局类型定义
-│   │   ├── metrics.ts            # 指标类型
-│   │   └── position.ts           # 持仓类型
-│   │
-│   ├── prisma.ts                 # Prisma 数据库客户端
-│   └── utils.ts                  # 工具函数
-│
-├── prisma/                       # Prisma ORM 配置
-│   └── schema.prisma             # 数据库模型定义
-│
-├── public/                       # 静态资源
-│   ├── images/
-│   └── ...
-│
-├── .env                          # 环境变量（不提交到 Git）
-├── .env.example                  # 环境变量模板
-├── .gitignore                    # Git 忽略文件
-├── eslint.config.mjs             # ESLint 配置
-├── next.config.ts                # Next.js 配置
-├── package.json                  # 项目依赖和脚本
-├── postcss.config.mjs            # PostCSS 配置
-├── README.md                     # 项目文档
-├── tailwind.config.ts            # Tailwind CSS 配置
-├── trading-style-config.json     # 交易策略配置
-└── tsconfig.json                 # TypeScript 配置
-```
-
----
+只需下载之后在pgAdmin可视化界面中查看
+<img width="1518" height="1143" alt="image" src="https://github.com/user-attachments/assets/1ec01f5d-ddc5-4922-911a-5981a02c7acb" />
+在右上的dashboard中看到数据波动，在SQL中可利用数据库语言进行查询
 
 ## 📊 数据库模型详解
 
@@ -832,179 +429,17 @@ model LessonLearned {
 }
 ```
 
----
-
-## 🛠️ 常见问题解决
-
-### 1. 数据库连接失败
-
-**错误信息**：
-```
-Error: P1001: Can't reach database server
-```
-
-**解决方案**：
-```bash
-# 检查 PostgreSQL 是否运行
-# Windows
-services.msc  # 查找 postgresql 服务
-
-# macOS
-brew services list
-
-# Linux
-sudo systemctl status postgresql
-
-# 如果未运行，启动服务
-# Windows: 在服务管理器中启动
-# macOS
-brew services start postgresql
-
-# Linux
-sudo systemctl start postgresql
-```
-
-### 2. API 连接超时
-
-**错误信息**：
-```
-Error: connect ETIMEDOUT
-```
-
-**解决方案**：
-1. 检查代理配置是否正确
-2. 确认代理软件是否运行
-3. 尝试更换代理端口
-4. 测试网络连接：
-   ```bash
-   curl https://demo-fapi.binance.com/fapi/v1/ping
-   ```
-
-### 3. 依赖安装失败
-
-**错误信息**：
-```
-npm ERR! code ERESOLVE
-```
-
-**解决方案**：
-```bash
-# 清除缓存
-npm cache clean --force
-
-# 删除 node_modules 和 package-lock.json
-rm -rf node_modules package-lock.json
-
-# 使用 legacy peer deps
-npm install --legacy-peer-deps
-```
-
-### 4. 端口已被占用
-
-**错误信息汇总**：
-```
-Error: listen EADDRINUSE: address already in use :::3000
-```
-
-**解决方案**：
-```bash
-# Windows
-netstat -ano | findstr :3000
-taskkill /PID <PID号> /F
-
-# macOS/Linux
-lsof -ti:3000 | xargs kill -9
-
-# 或使用其他端口
-PORT=3001 npm run dev
-```
-
-### 5. Prisma 客户端未生成
-
-**错误信息**：
-```
-Error: @prisma/client did not initialize yet
-```
-
-**解决方案**：
-```bash
-npx prisma generate
-```
-
-### 6. CRON_SECRET_KEY 错误
-
-**错误信息**：
-```
-error: secretOrPrivateKey must have a value
-```
-
-**原因**：
-- `.env` 文件中缺少 `CRON_SECRET_KEY` 配置
-- 定时任务需要此密钥生成 JWT 令牌
-
-**解决方案**：
-```bash
-# 在 .env 文件中添加
-CRON_SECRET_KEY="abc123secretkey_change_this_in_production"
-
-# 或生成强密码
-openssl rand -base64 32
-```
-
-### 7. 交易模式切换不生效
-
-**现象**：
-- 修改了 `TRADING_MODE` 但仍使用旧配置
-- 日志显示的 API 地址不正确
-
-**解决方案**：
-```bash
-# 1. 确认 .env 文件已保存
-# 2. 停止应用（Ctrl+C）
-# 3. 重新启动
-npm run dev
-
-# 4. 查看日志确认
-# 虚拟盘应显示: 🎮 Trading Mode: DRY-RUN (Virtual Trading)
-# 实盘应显示: ⚠️ Trading Mode: LIVE (Real Money Trading)
-```
-
-### 8. 找不到 getBinanceBaseUrl
-
-**错误信息**：
-```
-找不到导出的成员 'getBinanceBaseUrl'
-```
-
-**解决方案**：
-```bash
-# 确保已更新 binance-official.ts 文件
-# 如果仍有问题，重新安装依赖
-rm -rf node_modules package-lock.json
-npm install
-```
-
-
 
 ## 🤝 贡献指南
 
 欢迎提交 Issue 和 Pull Request！
-
-### 开发流程
-1. Fork 本项目
-2. 创建功能分支：`git checkout -b feature/AmazingFeature`
-3. 提交更改：`git commit -m 'Add some AmazingFeature'`
-4. 推送到分支：`git push origin feature/AmazingFeature`
-5. 提交 Pull Request
+联系方式：email:2731468336@qq.com
 
 
 ## 📄 许可证
 
 MIT License - 详见 [LICENSE](LICENSE) 文件
 
-### 联系方式
-添加issue
-email——2731468336@qq.com
 
 **免责声明**：本项目仅供学习和研究使用，不构成任何投资建议。加密货币交易具有高风险，可能导致部分或全部本金损失。使用本系统进行实盘交易的所有风险由用户自行承担。开发者不对任何交易损失负责。
 
@@ -1017,5 +452,5 @@ email——2731468336@qq.com
 ---
 
 **版本**：v1.0.0  
-**最后更新**：2025年1月  
+**最后更新**：2025年11月1日  
 **维护状态**：🟢 活跃维护中
