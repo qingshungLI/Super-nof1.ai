@@ -789,7 +789,7 @@ export function ModelsView() {
                                 <div className="pt-2 mt-2 border-t border-current/30 space-y-1.5">
                                   <div className="flex items-center gap-2 mb-1">
                                     <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
-                                      📊 趋势预测
+                                      📊 Trend Prediction
                                     </span>
                                     <span className={`text-xs px-1.5 py-0.5 rounded ${decision.prediction.confidence === "high"
                                       ? "bg-green-200 dark:bg-green-900 text-green-800 dark:text-green-200"
@@ -802,28 +802,28 @@ export function ModelsView() {
                                   </div>
 
                                   <div className="flex justify-between items-center">
-                                    <span className="text-muted-foreground">短期趋势:</span>
+                                    <span className="text-muted-foreground">Short-term Trend:</span>
                                     <span className={`font-semibold flex items-center gap-1 ${decision.prediction.short_term_trend === "bullish"
                                       ? "text-green-600 dark:text-green-400"
                                       : decision.prediction.short_term_trend === "bearish"
                                         ? "text-red-600 dark:text-red-400"
                                         : "text-gray-600 dark:text-gray-400"
                                       }`}>
-                                      {decision.prediction.short_term_trend === "bullish" && "📈 看涨"}
-                                      {decision.prediction.short_term_trend === "bearish" && "📉 看跌"}
-                                      {decision.prediction.short_term_trend === "neutral" && "➡️ 中性"}
+                                      {decision.prediction.short_term_trend === "bullish" && "📈 Bullish"}
+                                      {decision.prediction.short_term_trend === "bearish" && "📉 Bearish"}
+                                      {decision.prediction.short_term_trend === "neutral" && "➡️ Neutral"}
                                     </span>
                                   </div>
 
                                   <div className="flex justify-between items-center">
-                                    <span className="text-muted-foreground">支撑位:</span>
+                                    <span className="text-muted-foreground">Support:</span>
                                     <span className="font-mono font-semibold text-green-600 dark:text-green-400">
                                       ${decision.prediction.key_levels.support.toLocaleString()}
                                     </span>
                                   </div>
 
                                   <div className="flex justify-between items-center">
-                                    <span className="text-muted-foreground">阻力位:</span>
+                                    <span className="text-muted-foreground">Resistance:</span>
                                     <span className="font-mono font-semibold text-red-600 dark:text-red-400">
                                       ${decision.prediction.key_levels.resistance.toLocaleString()}
                                     </span>

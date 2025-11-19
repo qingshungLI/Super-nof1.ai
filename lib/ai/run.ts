@@ -135,14 +135,14 @@ export async function run(initialCapital?: number) {
               .optional()
               .describe("If opeartion is hold and you want to adjust the profit, generate object"),
             prediction: z.object({
-              short_term_trend: z.enum(["bullish", "bearish", "neutral"]).describe("短期趋势预测（1-4小时）"),
-              confidence: z.enum(["high", "medium", "low"]).describe("预测信心等级"),
+              short_term_trend: z.enum(["bullish", "bearish", "neutral"]).describe("Short-term trend prediction (1-4 hours)"),
+              confidence: z.enum(["high", "medium", "low"]).describe("Prediction confidence level"),
               key_levels: z.object({
-                support: z.number().describe("关键支撑位"),
-                resistance: z.number().describe("关键阻力位"),
+                support: z.number().describe("Key support level"),
+                resistance: z.number().describe("Key resistance level"),
               }),
-              analysis: z.string().describe("基于K线形态的简要分析（30-50字）"),
-            }).describe("MANDATORY: 基于K线数据的趋势预测分析"),
+              analysis: z.string().describe("Brief analysis based on candlestick patterns (30–50 characters)"),
+            }).describe("MANDATORY: Trend prediction analysis based on candlestick (K-line) data"),
             chat: z.string().describe("Reasoning and analysis for this decision"),
           });
           return z.object({
