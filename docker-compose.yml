@@ -34,20 +34,6 @@ services:
       # Database
       DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@db:5432/nof1
 
-      # AI Models
-      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
-      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
-
-      # Market Research
-      EXA_API_KEY: ${EXA_API_KEY}
-
-      # Trading (Binance)
-      BINANCE_API_KEY: ${BINANCE_API_KEY}
-      BINANCE_API_SECRET: ${BINANCE_API_SECRET}
-
-      # Trading Configuration
-      START_MONEY: ${START_MONEY:-10000}
-
       # Cron Job Authentication
       CRON_SECRET_KEY: ${CRON_SECRET_KEY}
 
