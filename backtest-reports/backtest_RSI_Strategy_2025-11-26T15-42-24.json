@@ -1,0 +1,391 @@
+{
+  "config": {
+    "startDate": "2025-10-27T15:42:23.910Z",
+    "endDate": "2025-11-26T15:42:23.910Z",
+    "symbols": [
+      "SOL/USDT"
+    ],
+    "timeframe": "1d",
+    "initialCapital": 10000,
+    "makerFee": 0.0002,
+    "takerFee": 0.0004,
+    "slippageModel": "fixed",
+    "slippagePercent": 0.0005,
+    "maxLeverage": 10,
+    "marginCallLevel": 0.5,
+    "liquidationLevel": 0.2,
+    "strategyConfig": {
+      "symbols": [
+        "SOL/USDT"
+      ],
+      "initialCapital": 10000,
+      "maxPositionSize": 0.3,
+      "maxLeverage": 10,
+      "riskPerTrade": 0.02,
+      "stopLossPercent": 3,
+      "takeProfitPercent": 6
+    },
+    "dataSource": "binance"
+  },
+  "strategyName": "RSI Strategy",
+  "startDate": "2025-10-27T15:42:23.910Z",
+  "endDate": "2025-11-26T15:42:23.910Z",
+  "duration": 986,
+  "equityCurve": [
+    {
+      "timestamp": 1761609600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761696000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761782400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761868800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761955200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762041600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762128000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762214400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762300800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762387200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762473600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762560000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762646400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762732800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762819200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762905600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762992000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763078400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763164800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763251200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763337600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763424000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763510400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763596800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763683200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763769600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763856000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763942400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1764028800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1764115200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    }
+  ],
+  "trades": [],
+  "performance": {
+    "totalReturn": 0,
+    "totalReturnPercent": 0,
+    "annualizedReturn": 0,
+    "sharpeRatio": 0,
+    "sortinoRatio": 0,
+    "calmarRatio": 0,
+    "maxDrawdown": 0,
+    "maxDrawdownPercent": 0,
+    "maxDrawdownDuration": 0,
+    "maxDrawdownStart": "2025-11-26T15:42:24.898Z",
+    "maxDrawdownEnd": "2025-11-26T15:42:24.898Z",
+    "profitFactor": 0,
+    "recoveryFactor": 0
+  },
+  "monthlyReturns": [
+    {
+      "year": 2025,
+      "month": 10,
+      "return": 0,
+      "returnPercent": 0,
+      "trades": 0,
+      "maxDrawdown": 0
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "return": 0,
+      "returnPercent": 0,
+      "trades": 0,
+      "maxDrawdown": 0
+    }
+  ],
+  "yearlyReturns": [
+    {
+      "year": 2025,
+      "return": 0,
+      "returnPercent": 0,
+      "trades": 0,
+      "maxDrawdown": 0,
+      "sharpeRatio": 0
+    }
+  ],
+  "riskMetrics": {
+    "dailyVolatility": 0,
+    "annualizedVolatility": 0,
+    "downsideVolatility": 0,
+    "var95": 0,
+    "var99": 0,
+    "cvar95": 0,
+    "avgDrawdown": 0,
+    "drawdownStdDev": 0,
+    "drawdownCount": 0,
+    "avgLeverage": 0,
+    "maxLeverage": 0,
+    "avgExposure": 0,
+    "maxExposure": 0
+  },
+  "tradeStatistics": {
+    "totalTrades": 0,
+    "winningTrades": 0,
+    "losingTrades": 0,
+    "winRate": 0,
+    "avgWin": 0,
+    "avgLoss": 0,
+    "avgWinPercent": 0,
+    "avgLossPercent": 0,
+    "largestWin": 0,
+    "largestLoss": 0,
+    "maxConsecutiveWins": 0,
+    "maxConsecutiveLosses": 0,
+    "avgHoldingPeriod": 0,
+    "longTrades": 0,
+    "shortTrades": 0,
+    "longWinRate": 0,
+    "shortWinRate": 0,
+    "tradesPerDay": 0,
+    "profitableDays": 0,
+    "losingDays": 0,
+    "dayWinRate": 0,
+    "totalFees": 0,
+    "totalSlippage": 0,
+    "feeImpact": 0
+  }
+}

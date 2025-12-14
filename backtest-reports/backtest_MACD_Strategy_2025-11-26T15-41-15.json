@@ -1,0 +1,6830 @@
+{
+  "config": {
+    "startDate": "2025-10-27T15:41:13.679Z",
+    "endDate": "2025-11-26T15:41:13.679Z",
+    "symbols": [
+      "SOL/USDT"
+    ],
+    "timeframe": "1h",
+    "initialCapital": 10000,
+    "makerFee": 0.0002,
+    "takerFee": 0.0004,
+    "slippageModel": "fixed",
+    "slippagePercent": 0.0005,
+    "maxLeverage": 10,
+    "marginCallLevel": 0.5,
+    "liquidationLevel": 0.2,
+    "strategyConfig": {
+      "symbols": [
+        "SOL/USDT"
+      ],
+      "initialCapital": 10000,
+      "maxPositionSize": 0.3,
+      "maxLeverage": 10,
+      "riskPerTrade": 0.02,
+      "stopLossPercent": 3,
+      "takeProfitPercent": 6
+    },
+    "dataSource": "binance"
+  },
+  "strategyName": "MACD Strategy",
+  "startDate": "2025-10-27T15:41:13.679Z",
+  "endDate": "2025-11-26T15:41:13.679Z",
+  "duration": 1848,
+  "equityCurve": [
+    {
+      "timestamp": 1761580800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761584400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761588000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761591600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761595200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761598800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761602400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761606000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761609600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761613200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761616800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761620400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761624000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761627600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761631200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761634800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761638400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761642000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761645600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761649200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761652800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761656400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761660000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761663600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761667200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761670800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761674400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761678000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761681600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761685200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761688800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761692400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761696000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761699600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761703200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761706800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761710400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761714000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761717600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761721200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761724800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761728400000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761732000000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761735600000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761739200000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761742800000,
+      "equity": 10000,
+      "balance": 10000,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761746400000,
+      "equity": 9999.1996,
+      "balance": 9999.1996,
+      "drawdown": 0.8004000000000815,
+      "drawdownPercent": 0.008004000000000814,
+      "positionCount": 1,
+      "leverage": 0.20011601728602357
+    },
+    {
+      "timestamp": 1761750000000,
+      "equity": 9965.98832605412,
+      "balance": 9999.1996,
+      "drawdown": 34.01167394588083,
+      "drawdownPercent": 0.34011673945880827,
+      "positionCount": 1,
+      "leverage": 0.1974504345855716
+    },
+    {
+      "timestamp": 1761753600000,
+      "equity": 10101.88540503176,
+      "balance": 10150.201965828039,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761757200000,
+      "equity": 10149.389543662694,
+      "balance": 10149.389543662694,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20011601728602357
+    },
+    {
+      "timestamp": 1761760800000,
+      "equity": 10247.536920547855,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761764400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761768000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761771600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761775200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761778800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761782400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761786000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761789600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761793200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761796800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761800400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761804000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761807600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761811200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761814800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761818400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761822000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761825600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761829200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761832800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761836400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761840000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761843600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761847200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761850800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761854400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761858000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761861600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761865200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761868800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761872400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761876000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761879600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761883200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761886800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761890400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761894000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761897600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761901200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761904800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761908400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761912000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761915600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761919200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761922800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761926400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761930000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761933600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761937200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761940800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761944400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761948000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761951600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761955200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761958800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761962400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761966000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761969600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761973200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761976800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761980400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761984000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761987600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761991200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761994800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1761998400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762002000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762005600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762009200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762012800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762016400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762020000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762023600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762027200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762030800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762034400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762038000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762041600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762045200000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762048800000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762052400000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762056000000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762059600000,
+      "equity": 10299.620208348271,
+      "balance": 10299.620208348271,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762063200000,
+      "equity": 10298.795826746795,
+      "balance": 10298.795826746795,
+      "drawdown": 0.8243816014764889,
+      "drawdownPercent": 0.008004000000002847,
+      "positionCount": 1,
+      "leverage": 0.20011601728602357
+    },
+    {
+      "timestamp": 1762066800000,
+      "equity": 10301.39500857173,
+      "balance": 10298.795826746795,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20031783887506038
+    },
+    {
+      "timestamp": 1762070400000,
+      "equity": 10294.796565215785,
+      "balance": 10298.795826746795,
+      "drawdown": 6.598443355944255,
+      "drawdownPercent": 0.06405388154180797,
+      "positionCount": 1,
+      "leverage": 0.1998052830989929
+    },
+    {
+      "timestamp": 1762074000000,
+      "equity": 10281.049808224236,
+      "balance": 10298.795826746795,
+      "drawdown": 20.34520034749403,
+      "drawdownPercent": 0.1974994680872339,
+      "positionCount": 1,
+      "leverage": 0.1987353454443421
+    },
+    {
+      "timestamp": 1762077600000,
+      "equity": 10271.482065358117,
+      "balance": 10298.795826746795,
+      "drawdown": 29.91294321361238,
+      "drawdownPercent": 0.29037759632284754,
+      "positionCount": 1,
+      "leverage": 0.197988978548726
+    },
+    {
+      "timestamp": 1762081200000,
+      "equity": 10283.799159622546,
+      "balance": 10298.795826746795,
+      "drawdown": 17.595848949184074,
+      "drawdownPercent": 0.1708103507781487,
+      "positionCount": 1,
+      "leverage": 0.19894956181168114
+    },
+    {
+      "timestamp": 1762084800000,
+      "equity": 10460.44545435369,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762088400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762092000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762095600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762099200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762102800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762106400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762110000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762113600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762117200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762120800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762124400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762128000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762131600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762135200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762138800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762142400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762146000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762149600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762153200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762156800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762160400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762164000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762167600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762171200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762174800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762178400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762182000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762185600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762189200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762192800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762196400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762200000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762203600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762207200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762210800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762214400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762218000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762221600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762225200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762228800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762232400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762236000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762239600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762243200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762246800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762250400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762254000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762257600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762261200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762264800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762268400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762272000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762275600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762279200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762282800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762286400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762290000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762293600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762297200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762300800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762304400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762308000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762311600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762315200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762318800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762322400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762326000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762329600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762333200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762336800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762340400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762344000000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762347600000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762351200000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762354800000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762358400000,
+      "equity": 10482.260512945748,
+      "balance": 10482.260512945748,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762362000000,
+      "equity": 10481.421512814291,
+      "balance": 10481.421512814291,
+      "drawdown": 0.839000131456487,
+      "drawdownPercent": 0.008004000000002951,
+      "positionCount": 1,
+      "leverage": 0.2001160172860236
+    },
+    {
+      "timestamp": 1762365600000,
+      "equity": 10494.227920508722,
+      "balance": 10481.421512814291,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20109213868042
+    },
+    {
+      "timestamp": 1762369200000,
+      "equity": 10486.84741468156,
+      "balance": 10481.421512814291,
+      "drawdown": 7.38050582716096,
+      "drawdownPercent": 0.07032919318187611,
+      "positionCount": 1,
+      "leverage": 0.20052987779374207
+    },
+    {
+      "timestamp": 1762372800000,
+      "equity": 10487.235862356674,
+      "balance": 10481.421512814291,
+      "drawdown": 6.992058152047321,
+      "drawdownPercent": 0.06662765669862039,
+      "positionCount": 1,
+      "leverage": 0.20055949020204203
+    },
+    {
+      "timestamp": 1762376400000,
+      "equity": 10478.431048387429,
+      "balance": 10481.421512814291,
+      "drawdown": 15.796872121292836,
+      "drawdownPercent": 0.1505291503191124,
+      "positionCount": 1,
+      "leverage": 0.19988773648855704
+    },
+    {
+      "timestamp": 1762380000000,
+      "equity": 10490.861373991069,
+      "balance": 10481.421512814291,
+      "drawdown": 3.3665465176527505,
+      "drawdownPercent": 0.03207998285489451,
+      "positionCount": 1,
+      "leverage": 0.20083576693146912
+    },
+    {
+      "timestamp": 1762383600000,
+      "equity": 10485.164141422734,
+      "balance": 10481.421512814291,
+      "drawdown": 9.063779085987335,
+      "drawdownPercent": 0.08636918460932337,
+      "positionCount": 1,
+      "leverage": 0.2004015320034626
+    },
+    {
+      "timestamp": 1762387200000,
+      "equity": 10472.60433326072,
+      "balance": 10481.421512814291,
+      "drawdown": 21.62358724800106,
+      "drawdownPercent": 0.20605219756798296,
+      "positionCount": 1,
+      "leverage": 0.19944257250827957
+    },
+    {
+      "timestamp": 1762390800000,
+      "equity": 10465.35330999193,
+      "balance": 10481.421512814291,
+      "drawdown": 28.874610516792018,
+      "drawdownPercent": 0.27514754525545204,
+      "positionCount": 1,
+      "leverage": 0.19888789839811807
+    },
+    {
+      "timestamp": 1762394400000,
+      "equity": 10477.265705362086,
+      "balance": 10481.421512814291,
+      "drawdown": 16.96221514663557,
+      "drawdownPercent": 0.1616337597688969,
+      "positionCount": 1,
+      "leverage": 0.19979874330350345
+    },
+    {
+      "timestamp": 1762398000000,
+      "equity": 10486.329484448075,
+      "balance": 10481.421512814291,
+      "drawdown": 7.898436060646418,
+      "drawdownPercent": 0.0752645751595562,
+      "positionCount": 1,
+      "leverage": 0.20049039116997416
+    },
+    {
+      "timestamp": 1762401600000,
+      "equity": 10481.927077463451,
+      "balance": 10481.421512814291,
+      "drawdown": 12.300843045270085,
+      "drawdownPercent": 0.11721532196981087,
+      "positionCount": 1,
+      "leverage": 0.2001545973164037
+    },
+    {
+      "timestamp": 1762405200000,
+      "equity": 10445.93092623624,
+      "balance": 10481.421512814291,
+      "drawdown": 48.29699427248124,
+      "drawdownPercent": 0.46022436941830763,
+      "positionCount": 1,
+      "leverage": 0.1973983703916137
+    },
+    {
+      "timestamp": 1762408800000,
+      "equity": 10438.67990296745,
+      "balance": 10481.421512814291,
+      "drawdown": 55.5480175412722,
+      "drawdownPercent": 0.5293197171057767,
+      "positionCount": 1,
+      "leverage": 0.19684085898730236
+    },
+    {
+      "timestamp": 1762412400000,
+      "equity": 10439.327315759307,
+      "balance": 10481.421512814291,
+      "drawdown": 54.900604749414924,
+      "drawdownPercent": 0.5231504896336723,
+      "positionCount": 1,
+      "leverage": 0.19689066827922894
+    },
+    {
+      "timestamp": 1762416000000,
+      "equity": 10446.319373911354,
+      "balance": 10481.421512814291,
+      "drawdown": 47.908546597367604,
+      "drawdownPercent": 0.4565228329350519,
+      "positionCount": 1,
+      "leverage": 0.19742821523226087
+    },
+    {
+      "timestamp": 1762419600000,
+      "equity": 10606.160989115731,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762423200000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762426800000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762430400000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762434000000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762437600000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762441200000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762444800000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762448400000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762452000000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762455600000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762459200000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762462800000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762466400000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762470000000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762473600000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762477200000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762480800000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762484400000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762488000000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762491600000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762495200000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762498800000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762502400000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762506000000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762509600000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762513200000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762516800000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762520400000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762524000000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762527600000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762531200000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762534800000,
+      "equity": 10648.255186170716,
+      "balance": 10648.255186170716,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762538400000,
+      "equity": 10647.402899825614,
+      "balance": 10647.402899825614,
+      "drawdown": 0.8522863451016747,
+      "drawdownPercent": 0.00800400000000536,
+      "positionCount": 1,
+      "leverage": 0.20011601728602357
+    },
+    {
+      "timestamp": 1762542000000,
+      "equity": 10673.41547917493,
+      "balance": 10647.402899825614,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20206544440344348
+    },
+    {
+      "timestamp": 1762545600000,
+      "equity": 10663.03142585179,
+      "balance": 10647.402899825614,
+      "drawdown": 10.384053323139597,
+      "drawdownPercent": 0.09728894507479904,
+      "positionCount": 1,
+      "leverage": 0.20128838630028517
+    },
+    {
+      "timestamp": 1762549200000,
+      "equity": 10664.871637833106,
+      "balance": 10647.402899825614,
+      "drawdown": 8.543841341823281,
+      "drawdownPercent": 0.08004786620077993,
+      "positionCount": 1,
+      "leverage": 0.2014262031190017
+    },
+    {
+      "timestamp": 1762552800000,
+      "equity": 10661.059770157523,
+      "balance": 10647.402899825614,
+      "drawdown": 12.355709017407207,
+      "drawdownPercent": 0.1157615295826779,
+      "positionCount": 1,
+      "leverage": 0.20114067262686258
+    },
+    {
+      "timestamp": 1762556400000,
+      "equity": 10642.394762918464,
+      "balance": 10647.402899825614,
+      "drawdown": 31.020716256465676,
+      "drawdownPercent": 0.29063532959052035,
+      "positionCount": 1,
+      "leverage": 0.19973960496675622
+    },
+    {
+      "timestamp": 1762560000000,
+      "equity": 10630.43338503991,
+      "balance": 10647.402899825614,
+      "drawdown": 42.982094135019,
+      "drawdownPercent": 0.40270234227161905,
+      "positionCount": 1,
+      "leverage": 0.19883915089874965
+    },
+    {
+      "timestamp": 1762563600000,
+      "equity": 10645.812299455192,
+      "balance": 10647.402899825614,
+      "drawdown": 27.603179719737454,
+      "drawdownPercent": 0.2586161831102186,
+      "positionCount": 1,
+      "leverage": 0.19999650590225962
+    },
+    {
+      "timestamp": 1762567200000,
+      "equity": 10663.425756990644,
+      "balance": 10647.402899825614,
+      "drawdown": 9.98972218428571,
+      "drawdownPercent": 0.09359442817321986,
+      "positionCount": 1,
+      "leverage": 0.20131792248006672
+    },
+    {
+      "timestamp": 1762570800000,
+      "equity": 10651.595822825042,
+      "balance": 10647.402899825614,
+      "drawdown": 21.819656349887737,
+      "drawdownPercent": 0.20442993522045888,
+      "positionCount": 1,
+      "leverage": 0.20043088578120324
+    },
+    {
+      "timestamp": 1762574400000,
+      "equity": 10654.093253371115,
+      "balance": 10647.402899825614,
+      "drawdown": 19.322225803814945,
+      "drawdownPercent": 0.18103132817714113,
+      "positionCount": 1,
+      "leverage": 0.200618313118477
+    },
+    {
+      "timestamp": 1762578000000,
+      "equity": 10636.742683261566,
+      "balance": 10647.402899825614,
+      "drawdown": 36.6727959133641,
+      "drawdownPercent": 0.3435900718464204,
+      "positionCount": 1,
+      "leverage": 0.1993143680654155
+    },
+    {
+      "timestamp": 1762581600000,
+      "equity": 10633.062259298933,
+      "balance": 10647.402899825614,
+      "drawdown": 40.35321987599673,
+      "drawdownPercent": 0.37807222959445863,
+      "positionCount": 1,
+      "leverage": 0.1990372265877824
+    },
+    {
+      "timestamp": 1762585200000,
+      "equity": 10632.405040734178,
+      "balance": 10647.402899825614,
+      "drawdown": 41.010438440751386,
+      "drawdownPercent": 0.38422975776374024,
+      "positionCount": 1,
+      "leverage": 0.19898771684823166
+    },
+    {
+      "timestamp": 1762588800000,
+      "equity": 10638.977226381734,
+      "balance": 10647.402899825614,
+      "drawdown": 34.438252793195716,
+      "drawdownPercent": 0.3226544760708392,
+      "positionCount": 1,
+      "leverage": 0.199482538983746
+    },
+    {
+      "timestamp": 1762592400000,
+      "equity": 10633.85092157664,
+      "balance": 10647.402899825614,
+      "drawdown": 39.56455759828896,
+      "drawdownPercent": 0.3706831957913003,
+      "positionCount": 1,
+      "leverage": 0.19909663019705773
+    },
+    {
+      "timestamp": 1762596000000,
+      "equity": 10629.25039162335,
+      "balance": 10647.402899825614,
+      "drawdown": 44.165087551578836,
+      "drawdownPercent": 0.4137858929763396,
+      "positionCount": 1,
+      "leverage": 0.19874998487337878
+    },
+    {
+      "timestamp": 1762599600000,
+      "equity": 10610.45394067134,
+      "balance": 10647.402899825614,
+      "drawdown": 62.96153850359042,
+      "drawdownPercent": 0.5898911986180588,
+      "positionCount": 1,
+      "leverage": 0.19733056807049384
+    },
+    {
+      "timestamp": 1762603200000,
+      "equity": 10610.979715523144,
+      "balance": 10647.402899825614,
+      "drawdown": 62.43576365178524,
+      "drawdownPercent": 0.5849651760826199,
+      "positionCount": 1,
+      "leverage": 0.1973703404018841
+    },
+    {
+      "timestamp": 1762606800000,
+      "equity": 10595.33791368196,
+      "balance": 10647.402899825614,
+      "drawdown": 78.07756549296937,
+      "drawdownPercent": 0.7315143465117399,
+      "positionCount": 1,
+      "leverage": 0.19618542547141463
+    },
+    {
+      "timestamp": 1762610400000,
+      "equity": 10588.502840608502,
+      "balance": 10647.402899825614,
+      "drawdown": 84.91263856642763,
+      "drawdownPercent": 0.7955526394723603,
+      "positionCount": 1,
+      "leverage": 0.19566654839907321
+    },
+    {
+      "timestamp": 1762614000000,
+      "equity": 10715.299321655126,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762617600000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762621200000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762624800000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762628400000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762632000000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762635600000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762639200000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762642800000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762646400000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762650000000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762653600000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762657200000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762660800000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762664400000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762668000000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762671600000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762675200000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762678800000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762682400000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762686000000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762689600000,
+      "equity": 10787.475195880303,
+      "balance": 10787.475195880303,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762693200000,
+      "equity": 10786.611766365624,
+      "balance": 10786.611766365624,
+      "drawdown": 0.8634295146785007,
+      "drawdownPercent": 0.008004000000002237,
+      "positionCount": 1,
+      "leverage": 0.20011601728602355
+    },
+    {
+      "timestamp": 1762696800000,
+      "equity": 10787.151544756896,
+      "balance": 10786.611766365624,
+      "drawdown": 0.3236511234063073,
+      "drawdownPercent": 0.003000249062263508,
+      "positionCount": 1,
+      "leverage": 0.2001560426891712
+    },
+    {
+      "timestamp": 1762700400000,
+      "equity": 10819.117431496376,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20251924112107134
+    },
+    {
+      "timestamp": 1762704000000,
+      "equity": 10824.51251786591,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20291671653302087
+    },
+    {
+      "timestamp": 1762707600000,
+      "equity": 10809.406276031217,
+      "balance": 10786.611766365624,
+      "drawdown": 15.1062418346919,
+      "drawdownPercent": 0.13955586276757476,
+      "positionCount": 1,
+      "leverage": 0.20180278552377193
+    },
+    {
+      "timestamp": 1762711200000,
+      "equity": 10838.674619585932,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20395820683843063
+    },
+    {
+      "timestamp": 1762714800000,
+      "equity": 10868.077840299884,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.2061118712569047
+    },
+    {
+      "timestamp": 1762718400000,
+      "equity": 10857.422544720057,
+      "balance": 10786.611766365624,
+      "drawdown": 10.655295579826998,
+      "drawdownPercent": 0.0980421352920029,
+      "positionCount": 1,
+      "leverage": 0.205332762528822
+    },
+    {
+      "timestamp": 1762722000000,
+      "equity": 10855.66914164996,
+      "balance": 10786.611766365624,
+      "drawdown": 12.40869864992419,
+      "drawdownPercent": 0.11417565122612146,
+      "positionCount": 1,
+      "leverage": 0.20520440821406652
+    },
+    {
+      "timestamp": 1762725600000,
+      "equity": 10858.366684834726,
+      "balance": 10786.611766365624,
+      "drawdown": 9.7111554651583,
+      "drawdownPercent": 0.08935485748131464,
+      "positionCount": 1,
+      "leverage": 0.20540185922066212
+    },
+    {
+      "timestamp": 1762729200000,
+      "equity": 10846.092863344038,
+      "balance": 10786.611766365624,
+      "drawdown": 21.984976955845923,
+      "drawdownPercent": 0.20228946902021167,
+      "positionCount": 1,
+      "leverage": 0.20450266391967795
+    },
+    {
+      "timestamp": 1762732800000,
+      "equity": 10885.746748160103,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20740044947965766
+    },
+    {
+      "timestamp": 1762736400000,
+      "equity": 10880.486538949808,
+      "balance": 10786.611766365624,
+      "drawdown": 5.260209210295216,
+      "drawdownPercent": 0.04832198775140796,
+      "positionCount": 1,
+      "leverage": 0.20701726445931903
+    },
+    {
+      "timestamp": 1762740000000,
+      "equity": 10889.118677141061,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.2076458861833924
+    },
+    {
+      "timestamp": 1762743600000,
+      "equity": 10893.839377714403,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20798924231245694
+    },
+    {
+      "timestamp": 1762747200000,
+      "equity": 10893.030114758973,
+      "balance": 10786.611766365624,
+      "drawdown": 0.809262955430313,
+      "drawdownPercent": 0.007428629405770637,
+      "positionCount": 1,
+      "leverage": 0.2079304023974153
+    },
+    {
+      "timestamp": 1762750800000,
+      "equity": 10886.286256797057,
+      "balance": 10786.611766365624,
+      "drawdown": 7.55312091734595,
+      "drawdownPercent": 0.06933387445382588,
+      "positionCount": 1,
+      "leverage": 0.20743972956958587
+    },
+    {
+      "timestamp": 1762754400000,
+      "equity": 10878.058750083519,
+      "balance": 10786.611766365624,
+      "drawdown": 15.780627630883828,
+      "drawdownPercent": 0.1448582734124606,
+      "positionCount": 1,
+      "leverage": 0.2068402848436784
+    },
+    {
+      "timestamp": 1762758000000,
+      "equity": 10884.128222249243,
+      "balance": 10786.611766365624,
+      "drawdown": 9.711155465160118,
+      "drawdownPercent": 0.08914355286921423,
+      "positionCount": 1,
+      "leverage": 0.20728258584526663
+    },
+    {
+      "timestamp": 1762761600000,
+      "equity": 10874.282189624846,
+      "balance": 10786.611766365624,
+      "drawdown": 19.557188089556803,
+      "drawdownPercent": 0.17952521063937357,
+      "positionCount": 1,
+      "leverage": 0.20656482614530755
+    },
+    {
+      "timestamp": 1762765200000,
+      "equity": 10912.857057167004,
+      "balance": 10786.611766365624,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.2093694680987759
+    },
+    {
+      "timestamp": 1762768800000,
+      "equity": 10897.07642953612,
+      "balance": 10786.611766365624,
+      "drawdown": 15.780627630883828,
+      "drawdownPercent": 0.1446058309773234,
+      "positionCount": 1,
+      "leverage": 0.20822451457860763
+    },
+    {
+      "timestamp": 1762772400000,
+      "equity": 10896.671798058407,
+      "balance": 10786.611766365624,
+      "drawdown": 16.185259108597165,
+      "drawdownPercent": 0.1483136727972398,
+      "positionCount": 1,
+      "leverage": 0.20819511318975953
+    },
+    {
+      "timestamp": 1762776000000,
+      "equity": 10894.244009192116,
+      "balance": 10786.611766365624,
+      "drawdown": 18.613047974888104,
+      "drawdownPercent": 0.17056072371683828,
+      "positionCount": 1,
+      "leverage": 0.20801865899185015
+    },
+    {
+      "timestamp": 1762779600000,
+      "equity": 11259.979207094435,
+      "balance": 11130.766618789812,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762783200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762786800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762790400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762794000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762797600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762801200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762804800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762808400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762812000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762815600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762819200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762822800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762826400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762830000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762833600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762837200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762840800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762844400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762848000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762851600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762855200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762858800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762862400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762866000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762869600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762873200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762876800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762880400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762884000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762887600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762891200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762894800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762898400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762902000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762905600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762909200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762912800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762916400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762920000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762923600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762927200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762930800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762934400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762938000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762941600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762945200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762948800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762952400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762956000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762959600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762963200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762966800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762970400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762974000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762977600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762981200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762984800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762988400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762992000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762995600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1762999200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763002800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763006400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763010000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763013600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763017200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763020800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763024400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763028000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763031600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763035200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763038800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763042400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763046000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763049600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763053200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763056800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763060400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763064000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763067600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763071200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763074800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763078400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763082000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763085600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763089200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763092800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763096400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763100000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763103600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763107200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763110800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763114400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763118000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763121600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763125200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763128800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763132400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763136000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763139600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763143200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763146800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763150400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763154000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763157600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763161200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763164800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763168400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763172000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763175600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763179200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763182800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763186400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763190000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763193600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763197200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763200800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763204400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763208000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763211600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763215200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763218800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763222400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763226000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763229600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763233200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763236800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763240400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763244000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763247600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763251200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763254800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763258400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763262000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763265600000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763269200000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763272800000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763276400000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763280000000,
+      "equity": 11130.766618789812,
+      "balance": 11130.766618789812,
+      "drawdown": 129.21258830462284,
+      "drawdownPercent": 1.1475384272753495,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763283600000,
+      "equity": 11129.875712229645,
+      "balance": 11129.875712229645,
+      "drawdown": 130.10349486479026,
+      "drawdownPercent": 1.1554505782996258,
+      "positionCount": 1,
+      "leverage": 0.20011601728602357
+    },
+    {
+      "timestamp": 1763287200000,
+      "equity": 11123.632175362163,
+      "balance": 11129.875712229645,
+      "drawdown": 136.34703173227172,
+      "drawdownPercent": 1.2108994983433472,
+      "positionCount": 1,
+      "leverage": 0.19966705375890845
+    },
+    {
+      "timestamp": 1763290800000,
+      "equity": 11077.14709652959,
+      "balance": 11129.875712229645,
+      "drawdown": 182.8321105648447,
+      "drawdownPercent": 1.6237339981023229,
+      "positionCount": 1,
+      "leverage": 0.19630846875736238
+    },
+    {
+      "timestamp": 1763294400000,
+      "equity": 11249.694928500003,
+      "balance": 11300.713390798192,
+      "drawdown": 10.28427859443218,
+      "drawdownPercent": 0.09133479205674282,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763298000000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763301600000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763305200000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763308800000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763312400000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763316000000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763319600000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763323200000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763326800000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763330400000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763334000000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763337600000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763341200000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763344800000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763348400000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763352000000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763355600000,
+      "equity": 11300.713390798192,
+      "balance": 11300.713390798192,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763359200000,
+      "equity": 11299.808881698393,
+      "balance": 11299.808881698393,
+      "drawdown": 0.9045090997988154,
+      "drawdownPercent": 0.008003999999994056,
+      "positionCount": 1,
+      "leverage": 0.2001160172860236
+    },
+    {
+      "timestamp": 1763362800000,
+      "equity": 11297.719225299239,
+      "balance": 11299.808881698393,
+      "drawdown": 2.9941654989524977,
+      "drawdownPercent": 0.02649536711010254,
+      "positionCount": 1,
+      "leverage": 0.19996806860277824
+    },
+    {
+      "timestamp": 1763366400000,
+      "equity": 11298.039086985931,
+      "balance": 11299.808881698393,
+      "drawdown": 2.674303812260405,
+      "drawdownPercent": 0.02366491140672592,
+      "positionCount": 1,
+      "leverage": 0.19999071851229028
+    },
+    {
+      "timestamp": 1763370000000,
+      "equity": 11308.274660960047,
+      "balance": 11299.808881698393,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20071483907233614
+    },
+    {
+      "timestamp": 1763373600000,
+      "equity": 11312.592793730379,
+      "balance": 11299.808881698393,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.2010199344213134
+    },
+    {
+      "timestamp": 1763377200000,
+      "equity": 11306.3554908399,
+      "balance": 11299.808881698393,
+      "drawdown": 6.2373028904785315,
+      "drawdownPercent": 0.05513592687553772,
+      "positionCount": 1,
+      "leverage": 0.2005791663350362
+    },
+    {
+      "timestamp": 1763380800000,
+      "equity": 11305.23597493648,
+      "balance": 11299.808881698393,
+      "drawdown": 7.356818793898128,
+      "drawdownPercent": 0.06503211887884267,
+      "positionCount": 1,
+      "leverage": 0.2005000026325892
+    },
+    {
+      "timestamp": 1763384400000,
+      "equity": 11244.9420469952,
+      "balance": 11299.808881698393,
+      "drawdown": 67.65074673517847,
+      "drawdownPercent": 0.5980127453422668,
+      "positionCount": 1,
+      "leverage": 0.19621318683319558
+    },
+    {
+      "timestamp": 1763388000000,
+      "equity": 11278.847385784462,
+      "balance": 11299.808881698393,
+      "drawdown": 33.74540794591667,
+      "drawdownPercent": 0.2982995018137568,
+      "positionCount": 1,
+      "leverage": 0.19862945006316976
+    },
+    {
+      "timestamp": 1763391600000,
+      "equity": 11386.53813058412,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763395200000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763398800000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763402400000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763406000000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763409600000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763413200000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763416800000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763420400000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763424000000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763427600000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763431200000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763434800000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763438400000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763442000000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763445600000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763449200000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763452800000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763456400000,
+      "equity": 11455.798741188413,
+      "balance": 11455.798741188413,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763460000000,
+      "equity": 11454.88181905717,
+      "balance": 11454.88181905717,
+      "drawdown": 0.9169221312440641,
+      "drawdownPercent": 0.00800399999999427,
+      "positionCount": 1,
+      "leverage": 0.2001160172860236
+    },
+    {
+      "timestamp": 1763463600000,
+      "equity": 11451.90862807133,
+      "balance": 11454.88181905717,
+      "drawdown": 3.8901131170823646,
+      "drawdownPercent": 0.033957589557642734,
+      "positionCount": 1,
+      "leverage": 0.19990834816078337
+    },
+    {
+      "timestamp": 1763467200000,
+      "equity": 11457.391461406489,
+      "balance": 11454.88181905717,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20029122494339688
+    },
+    {
+      "timestamp": 1763470800000,
+      "equity": 11459.38521898291,
+      "balance": 11454.88181905717,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20043036202612263
+    },
+    {
+      "timestamp": 1763474400000,
+      "equity": 11445.761208877364,
+      "balance": 11454.88181905717,
+      "drawdown": 13.624010105546404,
+      "drawdownPercent": 0.11888953766016792,
+      "positionCount": 1,
+      "leverage": 0.19947862586554332
+    },
+    {
+      "timestamp": 1763478000000,
+      "equity": 11482.47957757646,
+      "balance": 11454.88181905717,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20203851188740723
+    },
+    {
+      "timestamp": 1763481600000,
+      "equity": 11504.909350311202,
+      "balance": 11454.88181905717,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20359420383459823
+    },
+    {
+      "timestamp": 1763485200000,
+      "equity": 11487.96241091162,
+      "balance": 11454.88181905717,
+      "drawdown": 16.946939399582334,
+      "drawdownPercent": 0.14730180728563436,
+      "positionCount": 1,
+      "leverage": 0.20241935312719414
+    },
+    {
+      "timestamp": 1763488800000,
+      "equity": 11511.721355363974,
+      "balance": 11454.88181905717,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20406547308617795
+    },
+    {
+      "timestamp": 1763492400000,
+      "equity": 11511.555208899274,
+      "balance": 11454.88181905717,
+      "drawdown": 0.16614646470043226,
+      "drawdownPercent": 0.0014432808054636857,
+      "positionCount": 1,
+      "leverage": 0.20405398535012653
+    },
+    {
+      "timestamp": 1763496000000,
+      "equity": 11505.740082634711,
+      "balance": 11454.88181905717,
+      "drawdown": 5.981272729262855,
+      "drawdownPercent": 0.051958108997103514,
+      "positionCount": 1,
+      "leverage": 0.20365170557136203
+    },
+    {
+      "timestamp": 1763499600000,
+      "equity": 11483.476456364671,
+      "balance": 11454.88181905717,
+      "drawdown": 28.244898999302677,
+      "drawdownPercent": 0.2453577369308175,
+      "positionCount": 1,
+      "leverage": 0.20210778279890612
+    },
+    {
+      "timestamp": 1763503200000,
+      "equity": 11510.890623040466,
+      "balance": 11454.88181905717,
+      "drawdown": 0.8307323235076183,
+      "drawdownPercent": 0.007216404027365832,
+      "positionCount": 1,
+      "leverage": 0.20400803108967594
+    },
+    {
+      "timestamp": 1763506800000,
+      "equity": 11498.761931117235,
+      "balance": 11454.88181905717,
+      "drawdown": 12.959424246739218,
+      "drawdownPercent": 0.11257590282708395,
+      "positionCount": 1,
+      "leverage": 0.20316843275534108
+    },
+    {
+      "timestamp": 1763510400000,
+      "equity": 11506.072375564114,
+      "balance": 11454.88181905717,
+      "drawdown": 5.648979799860172,
+      "drawdownPercent": 0.04907154738616033,
+      "positionCount": 1,
+      "leverage": 0.20367470394117443
+    },
+    {
+      "timestamp": 1763514000000,
+      "equity": 11493.61139071148,
+      "balance": 11454.88181905717,
+      "drawdown": 18.109964652494455,
+      "drawdownPercent": 0.15731760779682163,
+      "positionCount": 1,
+      "leverage": 0.20281135498020492
+    },
+    {
+      "timestamp": 1763517600000,
+      "equity": 11523.3516078931,
+      "balance": 11454.88181905717,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20486879141400866
+    },
+    {
+      "timestamp": 1763521200000,
+      "equity": 11483.642602829372,
+      "balance": 11454.88181905717,
+      "drawdown": 39.70900506372891,
+      "drawdownPercent": 0.3445959683858783,
+      "positionCount": 1,
+      "leverage": 0.2021193267815679
+    },
+    {
+      "timestamp": 1763524800000,
+      "equity": 11465.366491712175,
+      "balance": 11454.88181905717,
+      "drawdown": 57.985116180925615,
+      "drawdownPercent": 0.5031966232915066,
+      "positionCount": 1,
+      "leverage": 0.20084748293317936
+    },
+    {
+      "timestamp": 1763528400000,
+      "equity": 11454.400825041857,
+      "balance": 11454.88181905717,
+      "drawdown": 68.95078285124328,
+      "drawdownPercent": 0.5983570162348805,
+      "positionCount": 1,
+      "leverage": 0.20008242850084781
+    },
+    {
+      "timestamp": 1763532000000,
+      "equity": 11471.680057370844,
+      "balance": 11454.88181905717,
+      "drawdown": 51.67155052225644,
+      "drawdownPercent": 0.44840730614227897,
+      "positionCount": 1,
+      "leverage": 0.20128730533604958
+    },
+    {
+      "timestamp": 1763535600000,
+      "equity": 11496.768173540813,
+      "balance": 11454.88181905717,
+      "drawdown": 26.58343435228744,
+      "drawdownPercent": 0.23069186168092537,
+      "positionCount": 1,
+      "leverage": 0.20303024705390352
+    },
+    {
+      "timestamp": 1763539200000,
+      "equity": 11490.454607882146,
+      "balance": 11454.88181905717,
+      "drawdown": 32.8970000109548,
+      "drawdownPercent": 0.28548117883013724,
+      "positionCount": 1,
+      "leverage": 0.20259234263367754
+    },
+    {
+      "timestamp": 1763542800000,
+      "equity": 11482.645724041162,
+      "balance": 11454.88181905717,
+      "drawdown": 40.70588385193878,
+      "drawdownPercent": 0.3532469131989051,
+      "positionCount": 1,
+      "leverage": 0.20205005787457814
+    },
+    {
+      "timestamp": 1763546400000,
+      "equity": 11479.82123414123,
+      "balance": 11454.88181905717,
+      "drawdown": 43.530373751869774,
+      "drawdownPercent": 0.37775792350250736,
+      "positionCount": 1,
+      "leverage": 0.201853730640363
+    },
+    {
+      "timestamp": 1763550000000,
+      "equity": 11463.538880600456,
+      "balance": 11454.88181905717,
+      "drawdown": 59.81272729264492,
+      "drawdownPercent": 0.5190566887820663,
+      "positionCount": 1,
+      "leverage": 0.200720075503819
+    },
+    {
+      "timestamp": 1763553600000,
+      "equity": 11469.52015332972,
+      "balance": 11454.88181905717,
+      "drawdown": 53.83145456338025,
+      "drawdownPercent": 0.4671510199038581,
+      "positionCount": 1,
+      "leverage": 0.20113689426794573
+    },
+    {
+      "timestamp": 1763557200000,
+      "equity": 11433.134077560027,
+      "balance": 11454.88181905717,
+      "drawdown": 90.21753033307323,
+      "drawdownPercent": 0.7829105055796207,
+      "positionCount": 1,
+      "leverage": 0.19859450359032488
+    },
+    {
+      "timestamp": 1763560800000,
+      "equity": 11654.991063497037,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763564400000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763568000000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763571600000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763575200000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763578800000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763582400000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763586000000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763589600000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763593200000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763596800000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763600400000,
+      "equity": 11669.096067617895,
+      "balance": 11669.096067617895,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763604000000,
+      "equity": 11668.162073168643,
+      "balance": 11668.162073168643,
+      "drawdown": 0.9339944492512586,
+      "drawdownPercent": 0.008003999999992479,
+      "positionCount": 1,
+      "leverage": 0.20011601728602355
+    },
+    {
+      "timestamp": 1763607600000,
+      "equity": 11659.032128852416,
+      "balance": 11668.162073168643,
+      "drawdown": 10.063938765479179,
+      "drawdownPercent": 0.08624437323304693,
+      "positionCount": 1,
+      "leverage": 0.19948964486154505
+    },
+    {
+      "timestamp": 1763611200000,
+      "equity": 11682.921232980816,
+      "balance": 11668.162073168643,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20112651930830416
+    },
+    {
+      "timestamp": 1763614800000,
+      "equity": 11674.308154621596,
+      "balance": 11668.162073168643,
+      "drawdown": 8.613078359219799,
+      "drawdownPercent": 0.07372367053973736,
+      "positionCount": 1,
+      "leverage": 0.2005371259329395
+    },
+    {
+      "timestamp": 1763618400000,
+      "equity": 11653.50675782952,
+      "balance": 11668.162073168643,
+      "drawdown": 29.414475151295846,
+      "drawdownPercent": 0.2517732899564448,
+      "positionCount": 1,
+      "leverage": 0.19911009243910893
+    },
+    {
+      "timestamp": 1763622000000,
+      "equity": 11669.107805423577,
+      "balance": 11668.162073168643,
+      "drawdown": 13.813427557239265,
+      "drawdownPercent": 0.11823607539391812,
+      "positionCount": 1,
+      "leverage": 0.2001808445286261
+    },
+    {
+      "timestamp": 1763625600000,
+      "equity": 11662.93239075093,
+      "balance": 11668.162073168643,
+      "drawdown": 19.98884222988636,
+      "drawdownPercent": 0.171094556158249,
+      "positionCount": 1,
+      "leverage": 0.1997573476941525
+    },
+    {
+      "timestamp": 1763629200000,
+      "equity": 11640.50588483447,
+      "balance": 11668.162073168643,
+      "drawdown": 42.41534814634542,
+      "drawdownPercent": 0.3630543020919045,
+      "positionCount": 1,
+      "leverage": 0.19821560657447138
+    },
+    {
+      "timestamp": 1763632800000,
+      "equity": 11644.243635820547,
+      "balance": 11668.162073168643,
+      "drawdown": 38.677597160269215,
+      "drawdownPercent": 0.3310610111029645,
+      "positionCount": 1,
+      "leverage": 0.19847297583784956
+    },
+    {
+      "timestamp": 1763636400000,
+      "equity": 11641.643461221538,
+      "balance": 11668.162073168643,
+      "drawdown": 41.27777175927804,
+      "drawdownPercent": 0.3533172135300471,
+      "positionCount": 1,
+      "leverage": 0.1982939538453286
+    },
+    {
+      "timestamp": 1763640000000,
+      "equity": 11640.180863009595,
+      "balance": 11668.162073168643,
+      "drawdown": 42.7403699712213,
+      "drawdownPercent": 0.3658363273952879,
+      "positionCount": 1,
+      "leverage": 0.19819321882725546
+    },
+    {
+      "timestamp": 1763643600000,
+      "equity": 11619.216955305079,
+      "balance": 11668.162073168643,
+      "drawdown": 63.7042776757371,
+      "drawdownPercent": 0.5452769594637026,
+      "positionCount": 1,
+      "leverage": 0.19674656339238253
+    },
+    {
+      "timestamp": 1763647200000,
+      "equity": 11622.467173553841,
+      "balance": 11668.162073168643,
+      "drawdown": 60.45405942697471,
+      "drawdownPercent": 0.5174567064298377,
+      "positionCount": 1,
+      "leverage": 0.19697119289135706
+    },
+    {
+      "timestamp": 1763650800000,
+      "equity": 11732.665360122019,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763654400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763658000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763661600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763665200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763668800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763672400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763676000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763679600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763683200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763686800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763690400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763694000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763697600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763701200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763704800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763708400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763712000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763715600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763719200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763722800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763726400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763730000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763733600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763737200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763740800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763744400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763748000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763751600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763755200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763758800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763762400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763766000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763769600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763773200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763776800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763780400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763784000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763787600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763791200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763794800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763798400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763802000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763805600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763809200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763812800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763816400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763820000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763823600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763827200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763830800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763834400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763838000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763841600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763845200000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763848800000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763852400000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763856000000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763859600000,
+      "equity": 11816.712835072212,
+      "balance": 11816.712835072212,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763863200000,
+      "equity": 11815.767025376894,
+      "balance": 11815.767025376894,
+      "drawdown": 0.9458096953185304,
+      "drawdownPercent": 0.008003999999994505,
+      "positionCount": 1,
+      "leverage": 0.20011601728602355
+    },
+    {
+      "timestamp": 1763866800000,
+      "equity": 11813.31209942017,
+      "balance": 11815.767025376894,
+      "drawdown": 3.400735652041476,
+      "drawdownPercent": 0.028779032709909246,
+      "positionCount": 1,
+      "leverage": 0.19994979328931492
+    },
+    {
+      "timestamp": 1763870400000,
+      "equity": 11827.31790082555,
+      "balance": 11815.767025376894,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.2008972054078935
+    },
+    {
+      "timestamp": 1763874000000,
+      "equity": 11824.043817380138,
+      "balance": 11815.767025376894,
+      "drawdown": 3.2740834454125434,
+      "drawdownPercent": 0.027682383046320345,
+      "positionCount": 1,
+      "leverage": 0.2006759334580118
+    },
+    {
+      "timestamp": 1763877600000,
+      "equity": 11802.762274984949,
+      "balance": 11815.767025376894,
+      "drawdown": 24.55562584060135,
+      "drawdownPercent": 0.2076178728474641,
+      "positionCount": 1,
+      "leverage": 0.19923467347045273
+    },
+    {
+      "timestamp": 1763881200000,
+      "equity": 11793.667598747688,
+      "balance": 11815.767025376894,
+      "drawdown": 33.65030207786185,
+      "drawdownPercent": 0.2845133813094941,
+      "positionCount": 1,
+      "leverage": 0.1986171640039672
+    },
+    {
+      "timestamp": 1763884800000,
+      "equity": 11808.219080727304,
+      "balance": 11815.767025376894,
+      "drawdown": 19.098820098246506,
+      "drawdownPercent": 0.1614805677702584,
+      "positionCount": 1,
+      "leverage": 0.1996047225694924
+    },
+    {
+      "timestamp": 1763888400000,
+      "equity": 11815.858608766603,
+      "balance": 11815.767025376894,
+      "drawdown": 11.45929205894754,
+      "drawdownPercent": 0.09688834066215196,
+      "positionCount": 1,
+      "leverage": 0.2001222170967133
+    },
+    {
+      "timestamp": 1763892000000,
+      "equity": 11813.67588646966,
+      "balance": 11815.767025376894,
+      "drawdown": 13.642014355889842,
+      "drawdownPercent": 0.11534326269303732,
+      "positionCount": 1,
+      "leverage": 0.19997442981286104
+    },
+    {
+      "timestamp": 1763895600000,
+      "equity": 11809.674228925265,
+      "balance": 11815.767025376894,
+      "drawdown": 17.64367190028497,
+      "drawdownPercent": 0.14917728641633482,
+      "positionCount": 1,
+      "leverage": 0.19970334457404837
+    },
+    {
+      "timestamp": 1763899200000,
+      "equity": 11830.046303696729,
+      "balance": 11815.767025376894,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20108150513953957
+    },
+    {
+      "timestamp": 1763902800000,
+      "equity": 11843.142637478384,
+      "balance": 11815.767025376894,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.2019649618024627
+    },
+    {
+      "timestamp": 1763906400000,
+      "equity": 11828.227368449277,
+      "balance": 11815.767025376894,
+      "drawdown": 14.91526902910664,
+      "drawdownPercent": 0.125940128272257,
+      "positionCount": 1,
+      "leverage": 0.20095864809893013
+    },
+    {
+      "timestamp": 1763910000000,
+      "equity": 11867.152582744751,
+      "balance": 11815.767025376894,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20357956795622753
+    },
+    {
+      "timestamp": 1763913600000,
+      "equity": 11846.780507973288,
+      "balance": 11815.767025376894,
+      "drawdown": 20.372074771463303,
+      "drawdownPercent": 0.17166775795134717,
+      "positionCount": 1,
+      "leverage": 0.2022100197840303
+    },
+    {
+      "timestamp": 1763917200000,
+      "equity": 11839.686660508225,
+      "balance": 11815.767025376894,
+      "drawdown": 27.46592223652624,
+      "drawdownPercent": 0.2314449236665469,
+      "positionCount": 1,
+      "leverage": 0.20173201723285766
+    },
+    {
+      "timestamp": 1763920800000,
+      "equity": 11854.420036012587,
+      "balance": 11815.767025376894,
+      "drawdown": 12.732546732164337,
+      "drawdownPercent": 0.10729234871959008,
+      "positionCount": 1,
+      "leverage": 0.20272415197310548
+    },
+    {
+      "timestamp": 1763924400000,
+      "equity": 11857.694119458,
+      "balance": 11815.767025376894,
+      "drawdown": 9.458463286751794,
+      "drawdownPercent": 0.07970288762027654,
+      "positionCount": 1,
+      "leverage": 0.20294429154064328
+    },
+    {
+      "timestamp": 1763928000000,
+      "equity": 11862.059564051884,
+      "balance": 11815.767025376894,
+      "drawdown": 5.09301869286719,
+      "drawdownPercent": 0.042916939487848284,
+      "positionCount": 1,
+      "leverage": 0.20323762192856878
+    },
+    {
+      "timestamp": 1763931600000,
+      "equity": 11871.518027338636,
+      "balance": 11815.767025376894,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20387243103081654
+    },
+    {
+      "timestamp": 1763935200000,
+      "equity": 11862.787138150867,
+      "balance": 11815.767025376894,
+      "drawdown": 8.730889187769208,
+      "drawdownPercent": 0.07354484209738849,
+      "positionCount": 1,
+      "leverage": 0.20328648933743115
+    },
+    {
+      "timestamp": 1763938800000,
+      "equity": 11825.135178528608,
+      "balance": 11815.767025376894,
+      "drawdown": 46.38284881002801,
+      "drawdownPercent": 0.39070697364241075,
+      "positionCount": 1,
+      "leverage": 0.20074970438900688
+    },
+    {
+      "timestamp": 1763942400000,
+      "equity": 11828.773049023512,
+      "balance": 11815.767025376894,
+      "drawdown": 42.74497831512417,
+      "drawdownPercent": 0.3600632894351656,
+      "positionCount": 1,
+      "leverage": 0.20099550917842982
+    },
+    {
+      "timestamp": 1763946000000,
+      "equity": 11841.869382805167,
+      "balance": 11815.767025376894,
+      "drawdown": 29.64864453346854,
+      "drawdownPercent": 0.24974602628906753,
+      "positionCount": 1,
+      "leverage": 0.20187915593778644
+    },
+    {
+      "timestamp": 1763949600000,
+      "equity": 11876.611046031501,
+      "balance": 11815.767025376894,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20421383251099895
+    },
+    {
+      "timestamp": 1763953200000,
+      "equity": 11877.156726605737,
+      "balance": 11815.767025376894,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20425039387520755
+    },
+    {
+      "timestamp": 1763956800000,
+      "equity": 11839.86855403297,
+      "balance": 11815.767025376894,
+      "drawdown": 37.28817257276751,
+      "drawdownPercent": 0.3139486447058424,
+      "positionCount": 1,
+      "leverage": 0.20174428086369225
+    },
+    {
+      "timestamp": 1763960400000,
+      "equity": 11867.880156843732,
+      "balance": 11815.767025376894,
+      "drawdown": 9.276569762005238,
+      "drawdownPercent": 0.07810429697559698,
+      "positionCount": 1,
+      "leverage": 0.20362839343058323
+    },
+    {
+      "timestamp": 1763964000000,
+      "equity": 11835.503109439085,
+      "balance": 11815.767025376894,
+      "drawdown": 41.65361716665211,
+      "drawdownPercent": 0.35070360798847444,
+      "positionCount": 1,
+      "leverage": 0.20144984968646062
+    },
+    {
+      "timestamp": 1763967600000,
+      "equity": 11819.496479261506,
+      "balance": 11815.767025376894,
+      "drawdown": 57.66024734423081,
+      "drawdownPercent": 0.48547180669147405,
+      "positionCount": 1,
+      "leverage": 0.20036840793835012
+    },
+    {
+      "timestamp": 1763971200000,
+      "equity": 11824.407604429627,
+      "balance": 11815.767025376894,
+      "drawdown": 52.74912217611018,
+      "drawdownPercent": 0.4441224729985091,
+      "positionCount": 1,
+      "leverage": 0.20070052528142338
+    },
+    {
+      "timestamp": 1763974800000,
+      "equity": 11794.395172846669,
+      "balance": 11815.767025376894,
+      "drawdown": 82.76155375906819,
+      "drawdownPercent": 0.696812845566616,
+      "positionCount": 1,
+      "leverage": 0.1986665998068459
+    },
+    {
+      "timestamp": 1763978400000,
+      "equity": 12020.90476912267,
+      "balance": 12036.092241811557,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763982000000,
+      "equity": 12036.092241811557,
+      "balance": 12036.092241811557,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763985600000,
+      "equity": 12036.092241811557,
+      "balance": 12036.092241811557,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763989200000,
+      "equity": 12036.092241811557,
+      "balance": 12036.092241811557,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763992800000,
+      "equity": 12036.092241811557,
+      "balance": 12036.092241811557,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1763996400000,
+      "equity": 12036.092241811557,
+      "balance": 12036.092241811557,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1764000000000,
+      "equity": 12035.128872988522,
+      "balance": 12035.128872988522,
+      "drawdown": 0.9633688230351254,
+      "drawdownPercent": 0.00800400000000439,
+      "positionCount": 1,
+      "leverage": 0.20011601728602357
+    },
+    {
+      "timestamp": 1764003600000,
+      "equity": 12091.926187168461,
+      "balance": 12035.128872988522,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20387317401775398
+    },
+    {
+      "timestamp": 1764007200000,
+      "equity": 12100.212033369051,
+      "balance": 12035.128872988522,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20441833673209814
+    },
+    {
+      "timestamp": 1764010800000,
+      "equity": 12097.870381181927,
+      "balance": 12035.128872988522,
+      "drawdown": 2.3416521871240548,
+      "drawdownPercent": 0.01935215829827133,
+      "positionCount": 1,
+      "leverage": 0.20426434470845045
+    },
+    {
+      "timestamp": 1764014400000,
+      "equity": 12128.67211379716,
+      "balance": 12035.128872988522,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20628517903035568
+    },
+    {
+      "timestamp": 1764018000000,
+      "equity": 12128.491986705842,
+      "balance": 12035.128872988522,
+      "drawdown": 0.18012709131835436,
+      "drawdownPercent": 0.0014851344782702797,
+      "positionCount": 1,
+      "leverage": 0.2062733911228241
+    },
+    {
+      "timestamp": 1764021600000,
+      "equity": 12129.752876345063,
+      "balance": 12035.128872988522,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20635589912341645
+    },
+    {
+      "timestamp": 1764025200000,
+      "equity": 12119.305505048667,
+      "balance": 12035.128872988522,
+      "drawdown": 10.447371296395431,
+      "drawdownPercent": 0.08613012485002443,
+      "positionCount": 1,
+      "leverage": 0.2056717432041192
+    },
+    {
+      "timestamp": 1764028800000,
+      "equity": 12118.945250866034,
+      "balance": 12035.128872988522,
+      "drawdown": 10.807625479028502,
+      "drawdownPercent": 0.08910012915518734,
+      "positionCount": 1,
+      "leverage": 0.20564813058181822
+    },
+    {
+      "timestamp": 1764032400000,
+      "equity": 12107.957498295687,
+      "balance": 12035.128872988522,
+      "drawdown": 21.79537804937536,
+      "drawdownPercent": 0.17968526046297115,
+      "positionCount": 1,
+      "leverage": 0.2049272706187578
+    },
+    {
+      "timestamp": 1764036000000,
+      "equity": 12114.442073583105,
+      "balance": 12035.128872988522,
+      "drawdown": 15.310802761958257,
+      "drawdownPercent": 0.1262251829698587,
+      "positionCount": 1,
+      "leverage": 0.20535285430980438
+    },
+    {
+      "timestamp": 1764039600000,
+      "equity": 12107.597244113053,
+      "balance": 12035.128872988522,
+      "drawdown": 22.155632232010248,
+      "drawdownPercent": 0.18265526476814903,
+      "positionCount": 1,
+      "leverage": 0.2049036137138837
+    },
+    {
+      "timestamp": 1764043200000,
+      "equity": 12121.106775961838,
+      "balance": 12035.128872988522,
+      "drawdown": 8.64610038322462,
+      "drawdownPercent": 0.07128010332416487,
+      "positionCount": 1,
+      "leverage": 0.20578978526174008
+    },
+    {
+      "timestamp": 1764046800000,
+      "equity": 12122.007411418424,
+      "balance": 12035.128872988522,
+      "drawdown": 7.745464926638306,
+      "drawdownPercent": 0.0638550925612276,
+      "positionCount": 1,
+      "leverage": 0.2058487931351969
+    },
+    {
+      "timestamp": 1764050400000,
+      "equity": 12114.261946491788,
+      "balance": 12035.128872988522,
+      "drawdown": 15.490929853274793,
+      "drawdownPercent": 0.12771018512244017,
+      "positionCount": 1,
+      "leverage": 0.20534103869283904
+    },
+    {
+      "timestamp": 1764054000000,
+      "equity": 12081.478815872068,
+      "balance": 12035.128872988522,
+      "drawdown": 48.27406047299519,
+      "drawdownPercent": 0.3979805768931801,
+      "positionCount": 1,
+      "leverage": 0.20318472911156174
+    },
+    {
+      "timestamp": 1764057600000,
+      "equity": 12065.447504744841,
+      "balance": 12035.128872988522,
+      "drawdown": 64.3053716002214,
+      "drawdownPercent": 0.5301457684733797,
+      "positionCount": 1,
+      "leverage": 0.20212600389531807
+    },
+    {
+      "timestamp": 1764061200000,
+      "equity": 12080.217926232848,
+      "balance": 12035.128872988522,
+      "drawdown": 49.534950112214574,
+      "drawdownPercent": 0.4083755919612803,
+      "positionCount": 1,
+      "leverage": 0.20310156040338356
+    },
+    {
+      "timestamp": 1764064800000,
+      "equity": 12085.981993154996,
+      "balance": 12035.128872988522,
+      "drawdown": 43.77088319006725,
+      "drawdownPercent": 0.3608555230785237,
+      "positionCount": 1,
+      "leverage": 0.20348161855162444
+    },
+    {
+      "timestamp": 1764068400000,
+      "equity": 12079.677544958897,
+      "balance": 12035.128872988522,
+      "drawdown": 50.075331386166,
+      "drawdownPercent": 0.41283059841903963,
+      "positionCount": 1,
+      "leverage": 0.2030659113562632
+    },
+    {
+      "timestamp": 1764072000000,
+      "equity": 12080.03779914153,
+      "balance": 12035.128872988522,
+      "drawdown": 49.71507720353293,
+      "drawdownPercent": 0.40986059411387676,
+      "positionCount": 1,
+      "leverage": 0.2030896777420553
+    },
+    {
+      "timestamp": 1764075600000,
+      "equity": 12064.90712347089,
+      "balance": 12035.128872988522,
+      "drawdown": 64.84575287417283,
+      "drawdownPercent": 0.534600774931139,
+      "positionCount": 1,
+      "leverage": 0.20209026751027553
+    },
+    {
+      "timestamp": 1764079200000,
+      "equity": 12051.03733743947,
+      "balance": 12035.128872988522,
+      "drawdown": 78.71553890559335,
+      "drawdownPercent": 0.6489459406803011,
+      "positionCount": 1,
+      "leverage": 0.20117193683448892
+    },
+    {
+      "timestamp": 1764082800000,
+      "equity": 12053.919370900545,
+      "balance": 12035.128872988522,
+      "drawdown": 75.83350544451787,
+      "drawdownPercent": 0.6251859062389078,
+      "positionCount": 1,
+      "leverage": 0.20136293273688774
+    },
+    {
+      "timestamp": 1764086400000,
+      "equity": 12076.075003132553,
+      "balance": 12035.128872988522,
+      "drawdown": 53.67787321250944,
+      "drawdownPercent": 0.4425306414707738,
+      "positionCount": 1,
+      "leverage": 0.20282816950831734
+    },
+    {
+      "timestamp": 1764090000000,
+      "equity": 12091.205678803193,
+      "balance": 12035.128872988522,
+      "drawdown": 38.54719754186954,
+      "drawdownPercent": 0.3177904606535115,
+      "positionCount": 1,
+      "leverage": 0.20382573325351813
+    },
+    {
+      "timestamp": 1764093600000,
+      "equity": 12080.7583075068,
+      "balance": 12035.128872988522,
+      "drawdown": 48.99456883826315,
+      "drawdownPercent": 0.4039205855035209,
+      "positionCount": 1,
+      "leverage": 0.20313720626128734
+    },
+    {
+      "timestamp": 1764097200000,
+      "equity": 12087.423009885533,
+      "balance": 12035.128872988522,
+      "drawdown": 42.32986645952951,
+      "drawdownPercent": 0.3489755058578271,
+      "positionCount": 1,
+      "leverage": 0.2035765764523208
+    },
+    {
+      "timestamp": 1764100800000,
+      "equity": 12106.51648156515,
+      "balance": 12035.128872988522,
+      "drawdown": 23.2363947799131,
+      "drawdownPercent": 0.19156527768366777,
+      "positionCount": 1,
+      "leverage": 0.20483263455174572
+    },
+    {
+      "timestamp": 1764104400000,
+      "equity": 12096.429364451391,
+      "balance": 12035.128872988522,
+      "drawdown": 33.32351189367182,
+      "drawdownPercent": 0.2747253982284993,
+      "positionCount": 1,
+      "leverage": 0.20416955075249765
+    },
+    {
+      "timestamp": 1764108000000,
+      "equity": 12128.852240888476,
+      "balance": 12035.128872988522,
+      "drawdown": 0.9006354565863148,
+      "drawdownPercent": 0.007425010762937277,
+      "positionCount": 1,
+      "leverage": 0.2062969665877599
+    },
+    {
+      "timestamp": 1764111600000,
+      "equity": 12128.67211379716,
+      "balance": 12035.128872988522,
+      "drawdown": 1.0807625479028502,
+      "drawdownPercent": 0.008910012915518734,
+      "positionCount": 1,
+      "leverage": 0.20628517903035568
+    },
+    {
+      "timestamp": 1764115200000,
+      "equity": 12129.93300343638,
+      "balance": 12035.128872988522,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20636768458038407
+    },
+    {
+      "timestamp": 1764118800000,
+      "equity": 12147.405331294141,
+      "balance": 12035.128872988522,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 1,
+      "leverage": 0.20750921263805117
+    },
+    {
+      "timestamp": 1764122400000,
+      "equity": 12134.075926536672,
+      "balance": 12035.128872988522,
+      "drawdown": 13.329404757469092,
+      "drawdownPercent": 0.10973046830939183,
+      "positionCount": 1,
+      "leverage": 0.20663865351716987
+    },
+    {
+      "timestamp": 1764126000000,
+      "equity": 12114.442073583105,
+      "balance": 12035.128872988522,
+      "drawdown": 32.96325771103693,
+      "drawdownPercent": 0.271360482440781,
+      "positionCount": 1,
+      "leverage": 0.20535285430980438
+    },
+    {
+      "timestamp": 1764129600000,
+      "equity": 12111.56004012203,
+      "balance": 12035.128872988522,
+      "drawdown": 35.84529117211059,
+      "drawdownPercent": 0.295085989102265,
+      "positionCount": 1,
+      "leverage": 0.2051637622641851
+    },
+    {
+      "timestamp": 1764133200000,
+      "equity": 12129.93300343638,
+      "balance": 12035.128872988522,
+      "drawdown": 17.47232785776214,
+      "drawdownPercent": 0.14383588413527237,
+      "positionCount": 1,
+      "leverage": 0.20636768458038407
+    },
+    {
+      "timestamp": 1764136800000,
+      "equity": 12139.839993458821,
+      "balance": 12035.128872988522,
+      "drawdown": 7.565337835319951,
+      "drawdownPercent": 0.06227945498640875,
+      "positionCount": 1,
+      "leverage": 0.2070153461174873
+    },
+    {
+      "timestamp": 1764140400000,
+      "equity": 12145.60406038097,
+      "balance": 12035.128872988522,
+      "drawdown": 1.8012709131708107,
+      "drawdownPercent": 0.014828441663425663,
+      "positionCount": 1,
+      "leverage": 0.20739168117587484
+    },
+    {
+      "timestamp": 1764144000000,
+      "equity": 12110.479277574128,
+      "balance": 12035.128872988522,
+      "drawdown": 36.92605372001344,
+      "drawdownPercent": 0.30398305410032345,
+      "positionCount": 1,
+      "leverage": 0.20509282954403657
+    },
+    {
+      "timestamp": 1764147600000,
+      "equity": 12087.963391159485,
+      "balance": 12035.128872988522,
+      "drawdown": 59.44194013465676,
+      "drawdownPercent": 0.4893385748932116,
+      "positionCount": 1,
+      "leverage": 0.2036121798281993
+    },
+    {
+      "timestamp": 1764151200000,
+      "equity": 12097.69025409061,
+      "balance": 12035.128872988522,
+      "drawdown": 49.71507720353111,
+      "drawdownPercent": 0.40926498991068605,
+      "positionCount": 1,
+      "leverage": 0.20425249669895157
+    },
+    {
+      "timestamp": 1764154800000,
+      "equity": 12090.305043346607,
+      "balance": 12035.128872988522,
+      "drawdown": 57.100287947534525,
+      "drawdownPercent": 0.4700616007307567,
+      "positionCount": 1,
+      "leverage": 0.2037664243467799
+    },
+    {
+      "timestamp": 1764158400000,
+      "equity": 12068.329538205917,
+      "balance": 12035.128872988522,
+      "drawdown": 79.0757930882246,
+      "drawdownPercent": 0.6509685890246008,
+      "positionCount": 1,
+      "leverage": 0.20231654389898762
+    },
+    {
+      "timestamp": 1764162000000,
+      "equity": 12088.503772433436,
+      "balance": 12035.128872988522,
+      "drawdown": 58.901558860705336,
+      "drawdownPercent": 0.48489004239418243,
+      "positionCount": 1,
+      "leverage": 0.20364778002098785
+    },
+    {
+      "timestamp": 1764165600000,
+      "equity": 12366.248327186884,
+      "balance": 12320.618892668606,
+      "drawdown": 0,
+      "drawdownPercent": 0,
+      "positionCount": 0,
+      "leverage": 0
+    },
+    {
+      "timestamp": 1764169200000,
+      "equity": 12320.618892668606,
+      "balance": 12320.618892668606,
+      "drawdown": 45.629434518277776,
+      "drawdownPercent": 0.3689836505867557,
+      "positionCount": 0,
+      "leverage": 0
+    }
+  ],
+  "trades": [
+    {
+      "id": "trade_1",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 200.029965,
+      "exitPrice": 195.2,
+      "quantity": 10.0035012254289,
+      "leverage": 10,
+      "pnl": -49.097634171960344,
+      "pnlPercent": -24.536548811574384,
+      "fees": 0.7810733756814885,
+      "slippage": 0,
+      "entryTime": 1761746400000,
+      "exitTime": 1764171675503,
+      "holdingPeriod": 2425275503,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_2",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 198.45918,
+      "exitPrice": 193.37,
+      "quantity": 10.23412176429526,
+      "leverage": 10,
+      "pnl": -52.87487665064085,
+      "pnlPercent": -26.033202394567983,
+      "fees": 0.7915888502247098,
+      "slippage": 0,
+      "entryTime": 1761757200000,
+      "exitTime": 1764171675503,
+      "holdingPeriod": 2414475503,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_3",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 187.403655,
+      "exitPrice": 185.42,
+      "quantity": 10.997405593239305,
+      "leverage": 10,
+      "pnl": -22.630714170096475,
+      "pnlPercent": -10.980698322025784,
+      "fees": 0.8156555780393727,
+      "slippage": 0,
+      "entryTime": 1762063200000,
+      "exitTime": 1764171675505,
+      "holdingPeriod": 2108475505,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_4",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 161.99095499999999,
+      "exitPrice": 158.74,
+      "quantity": 12.94825583712649,
+      "leverage": 10,
+      "pnl": -42.916359507619426,
+      "pnlPercent": -20.460716464076505,
+      "fees": 0.8221624526341837,
+      "slippage": 0,
+      "entryTime": 1762362000000,
+      "exitTime": 1764171675507,
+      "holdingPeriod": 1809675507,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_5",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 162.10101,
+      "exitPrice": 156.61,
+      "quantity": 13.144371295112597,
+      "leverage": 10,
+      "pnl": -72.99929022058711,
+      "pnlPercent": -34.26045278804857,
+      "fees": 0.8234159954110337,
+      "slippage": 0,
+      "entryTime": 1762538400000,
+      "exitTime": 1764171675508,
+      "holdingPeriod": 1633275508,
+      "exitReason": "stop_loss",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_6",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 160.03997999999999,
+      "exitPrice": 169.62,
+      "quantity": 13.487715923831336,
+      "leverage": 10,
+      "pnl": 128.2974737546228,
+      "pnlPercent": 59.43622337368461,
+      "fees": 0.9151145500001086,
+      "slippage": 0,
+      "entryTime": 1762693200000,
+      "exitTime": 1764171675509,
+      "holdingPeriod": 1478475509,
+      "exitReason": "take_profit",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_7",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 143.261595,
+      "exitPrice": 139.98,
+      "quantity": 15.546849107884366,
+      "leverage": 10,
+      "pnl": -51.888961473436616,
+      "pnlPercent": -23.29715092171081,
+      "fees": 0.8704991752486615,
+      "slippage": 0,
+      "entryTime": 1763283600000,
+      "exitTime": 1764171675517,
+      "holdingPeriod": 888075517,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_8",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 141.39066,
+      "exitPrice": 137.06,
+      "quantity": 15.993084334557306,
+      "leverage": 10,
+      "pnl": -70.13741545985162,
+      "pnlPercent": -31.01678710602238,
+      "fees": 0.8768048555577698,
+      "slippage": 0,
+      "entryTime": 1763359200000,
+      "exitTime": 1764171675518,
+      "holdingPeriod": 812475518,
+      "exitReason": "stop_loss",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_9",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 137.96895,
+      "exitPrice": 137.12,
+      "quantity": 16.61464647017899,
+      "leverage": 10,
+      "pnl": -15.016284250454866,
+      "pnlPercent": -6.550734784891834,
+      "fees": 0.9112801295963773,
+      "slippage": 0,
+      "entryTime": 1763460000000,
+      "exitTime": 1764171675520,
+      "holdingPeriod": 711675520,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_10",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 143.681805,
+      "exitPrice": 138.51,
+      "quantity": 16.251091243810173,
+      "leverage": 10,
+      "pnl": -84.94785040946583,
+      "pnlPercent": -36.380451929873836,
+      "fees": 0.9003754592720589,
+      "slippage": 0,
+      "entryTime": 1763604000000,
+      "exitTime": 1764171675521,
+      "holdingPeriod": 567675521,
+      "exitReason": "stop_loss",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_11",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 129.994965,
+      "exitPrice": 129.16,
+      "quantity": 18.18935247452045,
+      "leverage": 10,
+      "pnl": -16.127207395131794,
+      "pnlPercent": -6.820487239640481,
+      "fees": 0.9397347062436245,
+      "slippage": 0,
+      "entryTime": 1763863200000,
+      "exitTime": 1764171675524,
+      "holdingPeriod": 308475524,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    },
+    {
+      "id": "trade_12",
+      "symbol": "SOL/USDT",
+      "side": "long",
+      "entryPrice": 133.70681999999996,
+      "exitPrice": 136.24,
+      "quantity": 18.012709131714395,
+      "leverage": 10,
+      "pnl": 44.64781392143516,
+      "pnlPercent": 18.538201716262826,
+      "fees": 0.9816205968419077,
+      "slippage": 0,
+      "entryTime": 1764000000000,
+      "exitTime": 1764171675527,
+      "holdingPeriod": 171675527,
+      "exitReason": "signal",
+      "maxDrawdown": 0,
+      "maxProfit": 0
+    }
+  ],
+  "performance": {
+    "totalReturn": 2320.6188926686063,
+    "totalReturnPercent": 23.206188926686064,
+    "annualizedReturn": 1173.4610955275377,
+    "sharpeRatio": 11.720955368475076,
+    "sortinoRatio": 0,
+    "calmarRatio": 722.6929391753671,
+    "maxDrawdown": 182.8321105648447,
+    "maxDrawdownPercent": 1.6237339981023229,
+    "maxDrawdownDuration": 5.916666666666667,
+    "maxDrawdownStart": "2025-11-10T13:00:00.000Z",
+    "maxDrawdownEnd": "2025-11-16T11:00:00.000Z",
+    "profitFactor": 0.3613290123427466,
+    "recoveryFactor": 12.692622130211406
+  },
+  "monthlyReturns": [
+    {
+      "year": 2025,
+      "month": 10,
+      "return": 299.62020834827126,
+      "returnPercent": 2.9962020834827126,
+      "trades": 0,
+      "maxDrawdown": 0.34011673945880827
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "return": 2020.998684320335,
+      "returnPercent": 19.622069973825166,
+      "trades": 12,
+      "maxDrawdown": 1.6237339981023229
+    }
+  ],
+  "yearlyReturns": [
+    {
+      "year": 2025,
+      "return": 2320.6188926686063,
+      "returnPercent": 23.206188926686064,
+      "trades": 12,
+      "maxDrawdown": 1.6237339981023229,
+      "sharpeRatio": 1.3507253577023006
+    }
+  ],
+  "riskMetrics": {
+    "dailyVolatility": 0.9403906163389111,
+    "annualizedVolatility": 14.928238236549078,
+    "downsideVolatility": 0,
+    "var95": 0,
+    "var99": -0.05503646512776313,
+    "cvar95": -0.05503646512776313,
+    "avgDrawdown": 31.84724896096273,
+    "drawdownStdDev": 50.92284642676208,
+    "drawdownCount": 0,
+    "avgLeverage": 0.056387294964875,
+    "maxLeverage": 0.2093694680987759,
+    "avgExposure": 0.056387294964875,
+    "maxExposure": 0.2093694680987759
+  },
+  "tradeStatistics": {
+    "totalTrades": 12,
+    "winningTrades": 2,
+    "losingTrades": 10,
+    "winRate": 16.666666666666664,
+    "avgWin": 86.47264383802899,
+    "avgLoss": 47.8636593709245,
+    "avgWinPercent": 38.987212544973715,
+    "avgLossPercent": 22.033723076243255,
+    "largestWin": 128.2974737546228,
+    "largestLoss": 84.94785040946583,
+    "maxConsecutiveWins": 1,
+    "maxConsecutiveLosses": 5,
+    "avgHoldingPeriod": 354.85430930555555,
+    "longTrades": 12,
+    "shortTrades": 0,
+    "longWinRate": 16.666666666666664,
+    "shortWinRate": 0,
+    "tradesPerDay": 12,
+    "profitableDays": 0,
+    "losingDays": 1,
+    "dayWinRate": 0,
+    "totalFees": 10.429325724751296,
+    "totalSlippage": 0,
+    "feeImpact": 3.4117181349014385
+  }
+}

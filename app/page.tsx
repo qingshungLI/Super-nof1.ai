@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
 import { MetricsChart } from "@/components/metrics-chart";
 import { CryptoCard } from "@/components/crypto-card";
 import { ModelsView } from "@/components/models-view";
@@ -160,6 +161,16 @@ export default function Home() {
             </span>
             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full shadow-lg shadow-blue-500/50" />
           </button>
+          <Link href="/dashboard" className="group relative pb-3 px-2 hover:opacity-80 transition-opacity">
+            <span className="text-sm font-semibold tracking-wide text-muted-foreground group-hover:text-foreground transition-colors">
+              TRADING DASHBOARD
+            </span>
+          </Link>
+          <Link href="/backtest" className="group relative pb-3 px-2 hover:opacity-80 transition-opacity">
+            <span className="text-sm font-semibold tracking-wide text-muted-foreground group-hover:text-foreground transition-colors">
+              BACKTEST
+            </span>
+          </Link>
         </div>
 
         {/* Premium Crypto Ticker */}
@@ -228,14 +239,6 @@ export default function Home() {
         {/* Premium Footer */}
         <div className="relative mt-12 pt-8 border-t border-border/50">
           <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500/10 via-yellow-500/10 to-amber-500/10 border border-amber-500/20">
-              <svg className="w-6 h-6 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span className="text-sm font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-                TOP PERFORMER: DEEPSEEK R1
-              </span>
-            </div>
             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/80">
               <span className="font-semibold">Super Nof1.ai</span>
               <span>•</span>

@@ -6,8 +6,9 @@
  */
 
 import { prisma } from "../prisma";
+import { getAccountInformationAndPerformance } from "../trading/account-information-and-performance";
 
-export interface TradeLessson {
+export interface TradeLesson {
     id: string;
     timestamp: Date;
     symbol: string;
@@ -29,8 +30,8 @@ export interface LearningStats {
     avg_profit: number;
     avg_loss: number;
     total_pnl: number;
-    biggest_mistake: TradeLessson | null;
-    recent_lessons: TradeLessson[];
+    biggest_mistake: TradeLesson | null;
+    recent_lessons: TradeLesson[];
 }
 
 /**
@@ -40,7 +41,7 @@ export async function analyzeTradeOutcome(
     tradeId: string,
     finalPnl: number,
     exitReason: string
-): Promise<TradeLessson | null> {
+): Promise<TradeLesson | null> {
     try {
         // Fetch the original trade decision from database
         const trade = await prisma.trading.findUnique({
@@ -57,7 +58,15 @@ export async function analyzeTradeOutcome(
             return null;
         }
 
-        const balance = 20; // Default balance assumption, should be fetched from account
+        // Fetch actual account balance instead of hardcoding
+        let balance = 20; // Fallback
+        try {
+            const accountInfo = await getAccountInformationAndPerformance();
+            balance = accountInfo.availableCash || 20;
+        } catch (err) {
+            console.warn("Could not fetch balance, using fallback:", err);
+        }
+
         const pnlPercentage = (finalPnl / balance) * 100;
         const outcome: "profit" | "loss" = finalPnl >= 0 ? "profit" : "loss";
 
@@ -66,17 +75,17 @@ export async function analyzeTradeOutcome(
 
         if (outcome === "loss") {
             // Analyze why the trade lost money
-            lessonLearned = await generateLossLesson(trade, chat, finalPnl, exitReason);
+            lessonLearned = await generateLossLesson(trade, chat, finalPnl, exitReason, balance);
         } else {
             // Analyze what worked well
-            lessonLearned = await generateProfitLesson(trade, chat, finalPnl, exitReason);
+            lessonLearned = await generateProfitLesson(trade, chat, finalPnl, exitReason, balance);
         }
 
-        const lesson: TradeLessson = {
+        const lesson: TradeLesson = {
             id: trade.id,
             timestamp: trade.createdAt,
             symbol: trade.symbol,
-            decision: trade.opeartion,
+            decision: trade.opeartion, // 🐛 BUG: This field is spelled "opeartion" in the schema
             reasoning: chat?.reasoning || "No reasoning provided",
             outcome,
             pnl: finalPnl,
@@ -88,6 +97,8 @@ export async function analyzeTradeOutcome(
 
         // Store lesson in database for future reference
         await storeLessonInDatabase(lesson, exitReason);
+        
+        console.log(`✅ Lesson recorded for trade ${tradeId}: ${outcome} ($${finalPnl.toFixed(2)})`);
 
         return lesson;
     } catch (error) {
@@ -103,7 +114,8 @@ async function generateLossLesson(
     trade: any,
     chat: any,
     pnl: number,
-    exitReason: string
+    exitReason: string,
+    balance: number
 ): Promise<string> {
     const lessons: string[] = [];
 
@@ -137,7 +149,6 @@ async function generateLossLesson(
 
     // Default lesson if no specific pattern detected
     if (lessons.length === 0) {
-        const balance = 20;
         lessons.push(
             `📉 Loss on ${trade.symbol}: -$${Math.abs(pnl).toFixed(2)} (${(pnl / balance * 100).toFixed(2)}%). ` +
             `Exit reason: ${exitReason}. Review market conditions and indicators at entry.`
@@ -154,9 +165,9 @@ async function generateProfitLesson(
     trade: any,
     chat: any,
     pnl: number,
-    exitReason: string
+    exitReason: string,
+    balance: number
 ): Promise<string> {
-    const balance = 20;
     const pnlPercentage = ((pnl / balance) * 100).toFixed(2);
 
     return (
@@ -166,7 +177,9 @@ async function generateProfitLesson(
         `Key factors: "${chat?.reasoning?.substring(0, 100) || 'No reasoning'}..." ` +
         `REPLICATE this decision-making process in similar setups.`
     );
-}/**
+}
+
+/**
  * Extract key indicators from trade data
  */
 function extractIndicators(trade: any): any {
@@ -178,14 +191,14 @@ function extractIndicators(trade: any): any {
         macd: marketData.current_macd,
         ema20: marketData.current_ema20,
         price: marketData.current_price,
-        volume_ratio: marketData.longer_term?.current_volume / marketData.longer_term?.average_volume,
+        volume_ratio: marketData.longer_term?.current_volume / marketData.longer_term?.average_volume || null,
     };
 }
 
 /**
  * Store lesson in database for persistent learning
  */
-async function storeLessonInDatabase(lesson: TradeLessson, exitReason: string): Promise<void> {
+async function storeLessonInDatabase(lesson: TradeLesson, exitReason: string): Promise<void> {
     try {
         await prisma.tradingLesson.create({
             data: {
@@ -201,10 +214,14 @@ async function storeLessonInDatabase(lesson: TradeLessson, exitReason: string): 
                 exitReason: exitReason,
             },
         });
+        console.log(`💾 Lesson stored in database for trade ${lesson.id}`);
     } catch (error) {
         console.error("Error storing lesson in database:", error);
+        throw error; // Re-throw to let caller know storage failed
     }
-}/**
+}
+
+/**
  * Get learning statistics for the AI
  */
 export async function getLearningStats(
@@ -288,7 +305,9 @@ export async function getLearningStats(
         biggest_mistake: biggestMistakeLesson,
         recent_lessons: recentLessons,
     };
-}/**
+}
+
+/**
  * Format learning feedback for AI prompt
  */
 export function formatLearningFeedback(stats: LearningStats): string {

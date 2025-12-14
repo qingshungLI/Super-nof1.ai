@@ -15,7 +15,6 @@ import {
   ChartTooltip,
 } from "@/components/ui/chart";
 import { MetricData } from "@/lib/types/metrics";
-import { ArcticonsDeepseek } from "@/lib/icons";
 
 // 扩展的度量数据，包含处理后的字段
 interface ProcessedMetricData extends MetricData {
@@ -107,12 +106,14 @@ const CustomDot = (props: CustomDotProps) => {
       {/* 实时价格标签 */}
       <foreignObject x={cx + 18} y={cy - 28} width={200} height={56}>
         <div className="flex items-center gap-2.5 bg-gradient-to-br from-background/95 to-background/90 backdrop-blur-xl border border-border/50 rounded-xl px-3.5 py-2.5 shadow-2xl">
-          <div className="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg">
-            <ArcticonsDeepseek className="w-5 h-5 text-white drop-shadow" />
+          <div className="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg">
+            <svg className="w-5 h-5 text-white drop-shadow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
           </div>
           <div className="flex flex-col">
             <div className="text-[9px] font-semibold text-muted-foreground/80 uppercase tracking-wider">
-              Live • DeepSeek
+              Live • Multi-Agent
             </div>
             <div className="text-sm font-bold font-mono whitespace-nowrap bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
               {priceText}
@@ -664,11 +665,13 @@ export function MetricsChart({
                     return (
                       <div className="rounded-2xl border border-border/50 bg-gradient-to-br from-background/98 to-background/95 backdrop-blur-xl p-4 shadow-2xl min-w-[280px]">
                         <div className="flex items-center gap-3 mb-3 pb-3 border-b border-border/50">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
-                            <ArcticonsDeepseek className="w-6 h-6 text-white drop-shadow" />
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg">
+                            <svg className="w-6 h-6 text-white drop-shadow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
                           </div>
                           <div>
-                            <div className="text-xs font-bold text-foreground">DeepSeek R1</div>
+                            <div className="text-xs font-bold text-foreground">Multi-Agent System</div>
                             <div className="text-[10px] text-muted-foreground font-medium">
                               {date.toLocaleString("zh-CN", {
                                 month: "short",
@@ -693,8 +696,8 @@ export function MetricsChart({
                             <span className="text-xs font-semibold text-muted-foreground">Change</span>
                             <span
                               className={`text-sm font-black font-mono ${relativeReturn >= 0
-                                  ? "bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent"
-                                  : "bg-gradient-to-r from-red-500 to-rose-600 bg-clip-text text-transparent"
+                                ? "bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent"
+                                : "bg-gradient-to-r from-red-500 to-rose-600 bg-clip-text text-transparent"
                                 }`}
                             >
                               {relativeReturn >= 0 ? "+" : ""}{relativeReturn.toFixed(3)}%

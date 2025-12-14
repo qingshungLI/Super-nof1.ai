@@ -4,6 +4,7 @@ import { getAccountInformationAndPerformance } from "@/lib/trading/account-infor
 import { prisma } from "@/lib/prisma";
 import { ModelType } from "@prisma/client";
 import { InputJsonValue, JsonValue } from "@prisma/client/runtime/library";
+import { pushMetricsUpdate } from "@/lib/websocket/socket-server";
 
 // 🔧 大幅提高存储上限,保留更多历史数据
 // 10080 个点 = 7天数据 (每20秒一个点)
@@ -78,6 +79,28 @@ export const GET = async (request: NextRequest) => {
       metrics: finalMetrics as InputJsonValue[],
     },
   });
+
+  // 🔔 WebSocket 实时推送账户指标
+  try {
+    const positions = accountInformationAndPerformance.positions || [];
+    pushMetricsUpdate({
+      totalBalance: accountInformationAndPerformance.totalCashValue,
+      availableBalance: accountInformationAndPerformance.availableCash,
+      unrealizedPnL: accountInformationAndPerformance.currentPositionsValue - accountInformationAndPerformance.contractValue,
+      totalReturn: accountInformationAndPerformance.currentTotalReturn,
+      positions: positions.map((p: any) => ({
+        symbol: p.symbol,
+        side: p.positionSide || (p.positionAmt > 0 ? 'LONG' : 'SHORT'),
+        amount: Math.abs(p.positionAmt || 0),
+        entryPrice: p.entryPrice || 0,
+        pnl: p.unrealizedProfit || 0
+      })),
+      timestamp: Date.now()
+    });
+  } catch (wsError) {
+    // WebSocket 推送失败不影响主流程
+    console.warn('⚠️ WebSocket metrics push failed:', wsError);
+  }
 
   return new Response(
     `Process executed successfully. Metrics count: ${finalMetrics.length}`

@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回测报告 - MACD Strategy</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .metric-card h3 {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .metric-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .metric-card .value.positive { color: #00d395; }
+        .metric-card .value.negative { color: #ff6b6b; }
+        .metric-card .value.neutral { color: #667eea; }
+        .metric-card .subvalue {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        .chart-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .chart-container h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .chart-wrapper {
+            height: 400px;
+        }
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stats-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stats-card h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .stats-row:last-child {
+            border-bottom: none;
+        }
+        .stats-label {
+            color: #888;
+        }
+        .stats-value {
+            font-weight: 600;
+        }
+        .trades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .trades-table th,
+        .trades-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .trades-table th {
+            background: rgba(255,255,255,0.05);
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .trades-table tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        .pnl-positive { color: #00d395; }
+        .pnl-negative { color: #ff6b6b; }
+        .monthly-grid {
+            display: grid;
+            grid-template-columns: repeat(13, 1fr);
+            gap: 2px;
+            margin-top: 15px;
+        }
+        .monthly-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .monthly-header {
+            background: transparent;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .metric-card .value { font-size: 1.5rem; }
+            .stats-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 MACD Strategy</h1>
+            <div class="subtitle">
+                2025/10/27 - 2025/11/26 | 
+                初始资金: $10,000
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>总收益</h3>
+                <div class="value positive">
+                    +$2,320.62
+                </div>
+                <div class="subvalue">+23.21%</div>
+            </div>
+            <div class="metric-card">
+                <h3>年化收益</h3>
+                <div class="value positive">
+                    +1173.46%
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>夏普比率</h3>
+                <div class="value neutral">11.72</div>
+                <div class="subvalue">索提诺: 0.00</div>
+            </div>
+            <div class="metric-card">
+                <h3>最大回撤</h3>
+                <div class="value negative">+1.62%</div>
+                <div class="subvalue">+$182.83</div>
+            </div>
+            <div class="metric-card">
+                <h3>胜率</h3>
+                <div class="value neutral">+16.67%</div>
+                <div class="subvalue">2/12 笔盈利</div>
+            </div>
+            <div class="metric-card">
+                <h3>盈亏比</h3>
+                <div class="value neutral">0.36</div>
+                <div class="subvalue">平均盈利/平均亏损</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📈 权益曲线</h2>
+            <div class="chart-wrapper">
+                <canvas id="equityChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📉 回撤曲线</h2>
+            <div class="chart-wrapper">
+                <canvas id="drawdownChart"></canvas>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-card">
+                <h3>💰 收益指标</h3>
+                <div class="stats-row">
+                    <span class="stats-label">总收益</span>
+                    <span class="stats-value">+$2,320.62 (+23.21%)</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">年化收益</span>
+                    <span class="stats-value">+1173.46%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">夏普比率</span>
+                    <span class="stats-value">11.721</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">索提诺比率</span>
+                    <span class="stats-value">0.000</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">卡尔玛比率</span>
+                    <span class="stats-value">722.693</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">盈亏比</span>
+                    <span class="stats-value">0.361</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">恢复因子</span>
+                    <span class="stats-value">12.693</span>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h3>⚠️ 风险指标</h3>
+                <div class="stats-row">
+                    <span class="stats-label">最大回撤</span>
+                    <span class="stats-value">+1.62%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">回撤持续时间</span>
+                    <span class="stats-value">5.9 天</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">年化波动率</span>
+                    <span class="stats-value">+14.93%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">下行波动率</span>
+                    <span class="stats-value">+0.00%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">VaR (95%)</span>
+                    <span class="stats-value">+0.00%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">CVaR (95%)</span>
+                    <span class="stats-value">+0.06%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">平均杠杆</span>
+                    <span class="stats-value">0.06x</span>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h3>📈 交易统计</h3>
+                <div class="stats-row">
+                    <span class="stats-label">总交易次数</span>
+                    <span class="stats-value">12</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">胜率</span>
+                    <span class="stats-value">+16.67%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">平均盈利</span>
+                    <span class="stats-value">+$86.47</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">平均亏损</span>
+                    <span class="stats-value">+$47.86</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大单笔盈利</span>
+                    <span class="stats-value">+$128.3</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大单笔亏损</span>
+                    <span class="stats-value">+$84.95</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大连胜</span>
+                    <span class="stats-value">1</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大连败</span>
+                    <span class="stats-value">5</span>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h3>⏱️ 时间与费用</h3>
+                <div class="stats-row">
+                    <span class="stats-label">平均持仓时间</span>
+                    <span class="stats-value">354.9 小时</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">日均交易次数</span>
+                    <span class="stats-value">12.00</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">盈利天数</span>
+                    <span class="stats-value">0 天 (+0.00%)</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">总手续费</span>
+                    <span class="stats-value">+$10.43</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">费用占比</span>
+                    <span class="stats-value">+3.41%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">多头交易</span>
+                    <span class="stats-value">12 (胜率 +16.67%)</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">空头交易</span>
+                    <span class="stats-value">0 (胜率 +0.00%)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📅 月度收益热力图</h2>
+            <div class="monthly-grid">
+                <div class="monthly-cell monthly-header">年份</div>
+                <div class="monthly-cell monthly-header">1月</div><div class="monthly-cell monthly-header">2月</div><div class="monthly-cell monthly-header">3月</div><div class="monthly-cell monthly-header">4月</div><div class="monthly-cell monthly-header">5月</div><div class="monthly-cell monthly-header">6月</div><div class="monthly-cell monthly-header">7月</div><div class="monthly-cell monthly-header">8月</div><div class="monthly-cell monthly-header">9月</div><div class="monthly-cell monthly-header">10月</div><div class="monthly-cell monthly-header">11月</div><div class="monthly-cell monthly-header">12月</div>
+                <div class="monthly-cell monthly-header">2025</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(0, 211, 149, 0.4)" title="3.00%">3.0%</div><div class="monthly-cell" style="background:rgba(0, 211, 149, 0.8)" title="19.62%">19.6%</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📋 交易明细 (最近20笔)</h2>
+            <table class="trades-table">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>方向</th>
+                        <th>入场价</th>
+                        <th>出场价</th>
+                        <th>持仓时间</th>
+                        <th>盈亏</th>
+                        <th>退出原因</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$133.71</td>
+                            <td>$136.24</td>
+                            <td>47.7h</td>
+                            <td class="pnl-positive">
+                                +$44.65 (18.54%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$129.99</td>
+                            <td>$129.16</td>
+                            <td>85.7h</td>
+                            <td class="pnl-negative">
+                                $-16.13 (-6.82%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$143.68</td>
+                            <td>$138.51</td>
+                            <td>157.7h</td>
+                            <td class="pnl-negative">
+                                $-84.95 (-36.38%)
+                            </td>
+                            <td>❌ 止损</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$137.97</td>
+                            <td>$137.12</td>
+                            <td>197.7h</td>
+                            <td class="pnl-negative">
+                                $-15.02 (-6.55%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$141.39</td>
+                            <td>$137.06</td>
+                            <td>225.7h</td>
+                            <td class="pnl-negative">
+                                $-70.14 (-31.02%)
+                            </td>
+                            <td>❌ 止损</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$143.26</td>
+                            <td>$139.98</td>
+                            <td>246.7h</td>
+                            <td class="pnl-negative">
+                                $-51.89 (-23.30%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$160.04</td>
+                            <td>$169.62</td>
+                            <td>410.7h</td>
+                            <td class="pnl-positive">
+                                +$128.30 (59.44%)
+                            </td>
+                            <td>✅ 止盈</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$162.10</td>
+                            <td>$156.61</td>
+                            <td>453.7h</td>
+                            <td class="pnl-negative">
+                                $-73.00 (-34.26%)
+                            </td>
+                            <td>❌ 止损</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$161.99</td>
+                            <td>$158.74</td>
+                            <td>502.7h</td>
+                            <td class="pnl-negative">
+                                $-42.92 (-20.46%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$187.40</td>
+                            <td>$185.42</td>
+                            <td>585.7h</td>
+                            <td class="pnl-negative">
+                                $-22.63 (-10.98%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$198.46</td>
+                            <td>$193.37</td>
+                            <td>670.7h</td>
+                            <td class="pnl-negative">
+                                $-52.87 (-26.03%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2025/11/26 23:41:15</td>
+                            <td>🟢 做多</td>
+                            <td>$200.03</td>
+                            <td>$195.20</td>
+                            <td>673.7h</td>
+                            <td class="pnl-negative">
+                                $-49.10 (-24.54%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // 权益曲线图表
+        const equityCtx = document.getElementById('equityChart').getContext('2d');
+        new Chart(equityCtx, {
+            type: 'line',
+            data: {
+                labels: ["2025/10/28","2025/10/28","2025/10/28","2025/10/28","2025/10/29","2025/10/29","2025/10/29","2025/10/30","2025/10/30","2025/10/30","2025/10/30","2025/10/31","2025/10/31","2025/10/31","2025/11/1","2025/11/1","2025/11/1","2025/11/1","2025/11/2","2025/11/2","2025/11/2","2025/11/3","2025/11/3","2025/11/3","2025/11/4","2025/11/4","2025/11/4","2025/11/4","2025/11/5","2025/11/5","2025/11/5","2025/11/6","2025/11/6","2025/11/6","2025/11/6","2025/11/7","2025/11/7","2025/11/7","2025/11/8","2025/11/8","2025/11/8","2025/11/8","2025/11/9","2025/11/9","2025/11/9","2025/11/10","2025/11/10","2025/11/10","2025/11/11","2025/11/11","2025/11/11","2025/11/11","2025/11/12","2025/11/12","2025/11/12","2025/11/13","2025/11/13","2025/11/13","2025/11/13","2025/11/14","2025/11/14","2025/11/14","2025/11/15","2025/11/15","2025/11/15","2025/11/15","2025/11/16","2025/11/16","2025/11/16","2025/11/17","2025/11/17","2025/11/17","2025/11/18","2025/11/18","2025/11/18","2025/11/18","2025/11/19","2025/11/19","2025/11/19","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/21","2025/11/21","2025/11/21","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/23","2025/11/23","2025/11/23","2025/11/24","2025/11/24","2025/11/24","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/26","2025/11/26","2025/11/26"],
+                datasets: [{
+                    label: '权益',
+                    data: [10000,10000,10000,10000,10000,10000,10000,10149.389543662694,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10299.620208348271,10460.44545435369,10482.260512945748,10482.260512945748,10482.260512945748,10482.260512945748,10482.260512945748,10482.260512945748,10482.260512945748,10482.260512945748,10482.260512945748,10482.260512945748,10481.421512814291,10472.60433326072,10439.327315759307,10648.255186170716,10648.255186170716,10648.255186170716,10648.255186170716,10647.402899825614,10645.812299455192,10638.977226381734,10715.299321655126,10787.475195880303,10787.475195880303,10787.475195880303,10868.077840299884,10889.118677141061,10912.857057167004,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11130.766618789812,11249.694928500003,11300.713390798192,11300.713390798192,11308.274660960047,11455.798741188413,11455.798741188413,11455.798741188413,11459.38521898291,11505.740082634711,11483.642602829372,11479.82123414123,11669.096067617895,11669.096067617895,11669.107805423577,11622.467173553841,11816.712835072212,11816.712835072212,11816.712835072212,11816.712835072212,11816.712835072212,11816.712835072212,11816.712835072212,11816.712835072212,11824.043817380138,11830.046303696729,11857.694119458,11876.611046031501,11794.395172846669,12035.128872988522,12119.305505048667,12114.261946491788,12064.90712347089,12106.51648156515,12114.442073583105,12097.69025409061],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { 
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888', maxTicksLimit: 10 }
+                    },
+                    y: {
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888' }
+                    }
+                }
+            }
+        });
+
+        // 回撤曲线图表
+        const drawdownCtx = document.getElementById('drawdownChart').getContext('2d');
+        new Chart(drawdownCtx, {
+            type: 'line',
+            data: {
+                labels: ["2025/10/28","2025/10/28","2025/10/28","2025/10/28","2025/10/29","2025/10/29","2025/10/29","2025/10/30","2025/10/30","2025/10/30","2025/10/30","2025/10/31","2025/10/31","2025/10/31","2025/11/1","2025/11/1","2025/11/1","2025/11/1","2025/11/2","2025/11/2","2025/11/2","2025/11/3","2025/11/3","2025/11/3","2025/11/4","2025/11/4","2025/11/4","2025/11/4","2025/11/5","2025/11/5","2025/11/5","2025/11/6","2025/11/6","2025/11/6","2025/11/6","2025/11/7","2025/11/7","2025/11/7","2025/11/8","2025/11/8","2025/11/8","2025/11/8","2025/11/9","2025/11/9","2025/11/9","2025/11/10","2025/11/10","2025/11/10","2025/11/11","2025/11/11","2025/11/11","2025/11/11","2025/11/12","2025/11/12","2025/11/12","2025/11/13","2025/11/13","2025/11/13","2025/11/13","2025/11/14","2025/11/14","2025/11/14","2025/11/15","2025/11/15","2025/11/15","2025/11/15","2025/11/16","2025/11/16","2025/11/16","2025/11/17","2025/11/17","2025/11/17","2025/11/18","2025/11/18","2025/11/18","2025/11/18","2025/11/19","2025/11/19","2025/11/19","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/21","2025/11/21","2025/11/21","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/23","2025/11/23","2025/11/23","2025/11/24","2025/11/24","2025/11/24","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/26","2025/11/26","2025/11/26"],
+                datasets: [{
+                    label: '回撤 %',
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.008004000000002951,-0.20605219756798296,-0.5231504896336723,0,0,0,0,-0.00800400000000536,-0.2586161831102186,-0.3226544760708392,0,0,0,0,0,0,0,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-1.1475384272753495,-0.09133479205674282,0,0,0,0,0,0,0,-0.051958108997103514,-0.3445959683858783,-0.37775792350250736,0,0,-0.11823607539391812,-0.5174567064298377,0,0,0,0,0,0,0,0,-0.027682383046320345,0,-0.07970288762027654,0,-0.696812845566616,-0.00800400000000439,-0.08613012485002443,-0.12771018512244017,-0.534600774931139,-0.19156527768366777,-0.271360482440781,-0.40926498991068605],
+                    borderColor: '#ff6b6b',
+                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { 
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888', maxTicksLimit: 10 }
+                    },
+                    y: {
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888' },
+                        max: 0
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+        

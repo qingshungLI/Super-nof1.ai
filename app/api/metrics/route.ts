@@ -3,16 +3,21 @@ import { ModelType } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { MetricData } from "@/lib/types/metrics";
 
-// 🔧 移除数据点限制,返回所有历史数据
-// 前端通过滑动窗口控制显示,服务端返回完整数据集
+// 返回所有历史数据，前端通过滑动窗口控制显示
 
 export const GET = async () => {
   try {
-    const metrics = await prisma.metrics.findFirst({
+    // 尝试获取多Agent系统的指标，如果不存在则获取任何可用的指标
+    let metrics = await prisma.metrics.findFirst({
       where: {
         model: ModelType.Deepseek,
       },
     });
+
+    // 如果没有 Deepseek 数据，尝试获取任何可用的指标
+    if (!metrics) {
+      metrics = await prisma.metrics.findFirst();
+    }
 
     if (!metrics) {
       return NextResponse.json({
@@ -36,18 +41,16 @@ export const GET = async () => {
       } as unknown as MetricData;
     });
 
-    // 🔧 返回所有数据,不再采样
-    // 前端通过滑动窗口控制显示数量
     console.log(
       `📊 Returning all metrics: ${metricsData.length} points`
     );
 
     return NextResponse.json({
       data: {
-        metrics: metricsData, // 返回完整数据集
+        metrics: metricsData,
         totalCount: metricsData.length,
-        model: metrics?.model || ModelType.Deepseek,
-        name: metrics?.name || "Deepseek Trading Bot",
+        model: "Multi-Agent",  // 统一使用 Multi-Agent 标识
+        name: "Multi-Agent Trading System",
         createdAt: metrics?.createdAt || new Date().toISOString(),
         updatedAt: metrics?.updatedAt || new Date().toISOString(),
       },
@@ -59,8 +62,8 @@ export const GET = async () => {
       data: {
         metrics: [],
         totalCount: 0,
-        model: ModelType.Deepseek,
-        name: "Deepseek Trading Bot",
+        model: "Multi-Agent",
+        name: "Multi-Agent Trading System",
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       },

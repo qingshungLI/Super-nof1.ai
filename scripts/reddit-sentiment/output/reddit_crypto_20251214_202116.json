@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "scrape_time": "2025-12-14T12:20:21.357061+00:00",
+    "subreddits": [
+      "bitcoin",
+      "ethereum",
+      "solana",
+      "binance",
+      "dogecoin",
+      "CryptoCurrency"
+    ],
+    "include_comments": true,
+    "end_time": "2025-12-14T12:21:16.683772+00:00",
+    "duration_seconds": 55.326711,
+    "stats": {
+      "total_posts": 0,
+      "total_comments": 0,
+      "requests_made": 12,
+      "errors": 12
+    }
+  },
+  "subreddits": {
+    "bitcoin": {
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "posts": [],
+      "comments": [],
+      "sentiment_summary": {}
+    },
+    "ethereum": {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "posts": [],
+      "comments": [],
+      "sentiment_summary": {}
+    },
+    "solana": {
+      "name": "Solana",
+      "symbol": "SOL",
+      "posts": [],
+      "comments": [],
+      "sentiment_summary": {}
+    },
+    "binance": {
+      "name": "Binance",
+      "symbol": "BNB",
+      "posts": [],
+      "comments": [],
+      "sentiment_summary": {}
+    },
+    "dogecoin": {
+      "name": "Dogecoin",
+      "symbol": "DOGE",
+      "posts": [],
+      "comments": [],
+      "sentiment_summary": {}
+    },
+    "CryptoCurrency": {
+      "name": "Crypto General",
+      "symbol": "CRYPTO",
+      "posts": [],
+      "comments": [],
+      "sentiment_summary": {}
+    }
+  },
+  "all_posts": [],
+  "all_comments": []
+}

@@ -1,5 +1,6 @@
 import { getBinanceInstance, ensureTimeSync } from "./binance-official";
 import { fetchPositions } from "./positions";
+import { adjustPrecision, SYMBOL_PRECISION } from "./precision";
 
 export interface SellParams {
     symbol: string; // e.g., "BTC/USDT"
@@ -14,33 +15,6 @@ export interface SellResult {
     executedPrice?: number;
     executedAmount?: number;
     error?: string;
-}
-
-/**
- * Binance Futures 合约的精度配置
- */
-const SYMBOL_PRECISION: Record<string, { quantity: number; price: number; minNotional: number }> = {
-    "BTCUSDT": { quantity: 3, price: 1, minNotional: 5 },   // 0.001 BTC, 最小$5
-    "ETHUSDT": { quantity: 2, price: 2, minNotional: 5 },   // 0.01 ETH, 最小$5
-    "BNBUSDT": { quantity: 1, price: 2, minNotional: 5 },   // 0.1 BNB, 最小$5
-    "SOLUSDT": { quantity: 1, price: 3, minNotional: 5 },   // 0.1 SOL, 最小$5
-    "ADAUSDT": { quantity: 0, price: 4, minNotional: 5 },   // 1 ADA, 最小$5
-    "DOGEUSDT": { quantity: 0, price: 5, minNotional: 5 },  // 1 DOGE, 最小$5 🐕
-};
-
-/**
- * 调整数量精度
- */
-function adjustPrecision(amount: number, symbol: string): number {
-    const config = SYMBOL_PRECISION[symbol] || { quantity: 3, price: 2, minNotional: 5 };
-    const factor = Math.pow(10, config.quantity);
-    const adjusted = Math.floor(amount * factor) / factor;
-
-    if (adjusted !== amount) {
-        console.log(`⚙️ Precision adjusted: ${amount} → ${adjusted} (${config.quantity} decimals)`);
-    }
-
-    return adjusted;
 }
 
 /**
@@ -135,8 +109,8 @@ export async function sell(params: SellParams): Promise<SellResult> {
             return { success: false, error: "Sell amount must be greater than 0" };
         }
 
-        // 调整数量精度
-        const adjustedAmount = adjustPrecision(sellAmount, binanceSymbol);
+        // 调整数量精度（使用动态获取的精度）
+        const adjustedAmount = await adjustPrecision(sellAmount, binanceSymbol, client);
 
         if (adjustedAmount === 0) {
             return {
@@ -172,6 +146,12 @@ export async function sell(params: SellParams): Promise<SellResult> {
             try {
                 console.log(`🔄 Sell order attempt ${attempt}/3...`);
 
+                // 🔄 网络错误前重新同步时间
+                if (attempt > 1) {
+                    console.log(`⏰ Re-syncing server time before retry...`);
+                    await ensureTimeSync();
+                }
+
                 // Binance SDK requires: newOrder(symbol, side, type, options)
                 const response = await (client as any).newOrder(
                     binanceSymbol,
@@ -187,11 +167,44 @@ export async function sell(params: SellParams): Promise<SellResult> {
             } catch (orderError: any) {
                 lastError = orderError;
                 const errorMsg = orderError?.response?.data?.msg || orderError.message;
+                const errorCode = orderError?.code || orderError?.response?.data?.code;
+
                 console.warn(`⚠️ Sell order attempt ${attempt} failed: ${errorMsg}`);
+                if (errorCode) {
+                    console.warn(`   - Error code: ${errorCode}`);
+                }
+
+                // 判断是否为网络错误（可重试）
+                const isNetworkError =
+                    errorCode === 'ECONNRESET' ||
+                    errorCode === 'ETIMEDOUT' ||
+                    errorCode === 'ENOTFOUND' ||
+                    errorCode === 'ECONNREFUSED' ||
+                    errorMsg.includes('socket') ||
+                    errorMsg.includes('network') ||
+                    errorMsg.includes('TLS') ||
+                    errorMsg.includes('timeout');
+
+                // 判断是否为业务错误（不可重试）
+                const isBusinessError =
+                    errorMsg.includes('Precision') ||
+                    errorMsg.includes('insufficient') ||
+                    errorMsg.includes('Invalid') ||
+                    errorMsg.includes('Filter failure') ||
+                    errorMsg.includes('No open position');
+
+                if (isBusinessError) {
+                    console.error(`❌ Business error detected, no retry: ${errorMsg}`);
+                    throw orderError; // 立即抛出，不重试
+                }
 
                 if (attempt < 3) {
-                    const delay = attempt * 2000; // Increasing delay: 2s, 4s
-                    console.log(`⏳ Retrying in ${delay}ms...`);
+                    // 网络错误使用指数退避
+                    const delay = isNetworkError
+                        ? Math.min(Math.pow(2, attempt + 1) * 1000, 10000) // 4s, 8s (最多10s)
+                        : attempt * 2000; // 其他错误: 2s, 4s
+
+                    console.log(`⏳ ${isNetworkError ? 'Network error' : 'Error'} - retrying in ${delay}ms...`);
                     await new Promise(resolve => setTimeout(resolve, delay));
                 } else {
                     throw orderError; // Last attempt failed, throw error

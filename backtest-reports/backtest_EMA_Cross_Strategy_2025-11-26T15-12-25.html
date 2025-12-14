@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回测报告 - EMA Cross Strategy</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .metric-card h3 {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .metric-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .metric-card .value.positive { color: #00d395; }
+        .metric-card .value.negative { color: #ff6b6b; }
+        .metric-card .value.neutral { color: #667eea; }
+        .metric-card .subvalue {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        .chart-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .chart-container h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .chart-wrapper {
+            height: 400px;
+        }
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stats-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stats-card h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .stats-row:last-child {
+            border-bottom: none;
+        }
+        .stats-label {
+            color: #888;
+        }
+        .stats-value {
+            font-weight: 600;
+        }
+        .trades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .trades-table th,
+        .trades-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .trades-table th {
+            background: rgba(255,255,255,0.05);
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .trades-table tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        .pnl-positive { color: #00d395; }
+        .pnl-negative { color: #ff6b6b; }
+        .monthly-grid {
+            display: grid;
+            grid-template-columns: repeat(13, 1fr);
+            gap: 2px;
+            margin-top: 15px;
+        }
+        .monthly-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .monthly-header {
+            background: transparent;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .metric-card .value { font-size: 1.5rem; }
+            .stats-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 EMA Cross Strategy</h1>
+            <div class="subtitle">
+                2025/11/19 - 2025/11/26 | 
+                初始资金: $10,000
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>总收益</h3>
+                <div class="value positive">
+                    +$205.49
+                </div>
+                <div class="subvalue">+2.05%</div>
+            </div>
+            <div class="metric-card">
+                <h3>年化收益</h3>
+                <div class="value positive">
+                    +190.87%
+                </div>
+            </div>
+            <div class="metric-card">
+                <h3>夏普比率</h3>
+                <div class="value neutral">6.30</div>
+                <div class="subvalue">索提诺: 0.00</div>
+            </div>
+            <div class="metric-card">
+                <h3>最大回撤</h3>
+                <div class="value negative">+0.56%</div>
+                <div class="subvalue">+$55.89</div>
+            </div>
+            <div class="metric-card">
+                <h3>胜率</h3>
+                <div class="value neutral">+100.00%</div>
+                <div class="subvalue">1/1 笔盈利</div>
+            </div>
+            <div class="metric-card">
+                <h3>盈亏比</h3>
+                <div class="value neutral">Infinity</div>
+                <div class="subvalue">平均盈利/平均亏损</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📈 权益曲线</h2>
+            <div class="chart-wrapper">
+                <canvas id="equityChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📉 回撤曲线</h2>
+            <div class="chart-wrapper">
+                <canvas id="drawdownChart"></canvas>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-card">
+                <h3>💰 收益指标</h3>
+                <div class="stats-row">
+                    <span class="stats-label">总收益</span>
+                    <span class="stats-value">+$205.49 (+2.05%)</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">年化收益</span>
+                    <span class="stats-value">+190.87%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">夏普比率</span>
+                    <span class="stats-value">6.301</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">索提诺比率</span>
+                    <span class="stats-value">0.000</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">卡尔玛比率</span>
+                    <span class="stats-value">343.432</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">盈亏比</span>
+                    <span class="stats-value">Infinity</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">恢复因子</span>
+                    <span class="stats-value">3.677</span>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h3>⚠️ 风险指标</h3>
+                <div class="stats-row">
+                    <span class="stats-label">最大回撤</span>
+                    <span class="stats-value">+0.56%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">回撤持续时间</span>
+                    <span class="stats-value">1.7 天</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">年化波动率</span>
+                    <span class="stats-value">+11.41%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">下行波动率</span>
+                    <span class="stats-value">+0.00%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">VaR (95%)</span>
+                    <span class="stats-value">+0.21%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">CVaR (95%)</span>
+                    <span class="stats-value">+0.21%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">平均杠杆</span>
+                    <span class="stats-value">0.09x</span>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h3>📈 交易统计</h3>
+                <div class="stats-row">
+                    <span class="stats-label">总交易次数</span>
+                    <span class="stats-value">1</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">胜率</span>
+                    <span class="stats-value">+100.00%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">平均盈利</span>
+                    <span class="stats-value">+$6.19</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">平均亏损</span>
+                    <span class="stats-value">+$0</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大单笔盈利</span>
+                    <span class="stats-value">+$6.19</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大单笔亏损</span>
+                    <span class="stats-value">+$0</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大连胜</span>
+                    <span class="stats-value">1</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">最大连败</span>
+                    <span class="stats-value">0</span>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h3>⏱️ 时间与费用</h3>
+                <div class="stats-row">
+                    <span class="stats-label">平均持仓时间</span>
+                    <span class="stats-value">73.2 小时</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">日均交易次数</span>
+                    <span class="stats-value">1.00</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">盈利天数</span>
+                    <span class="stats-value">1 天 (+100.00%)</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">总手续费</span>
+                    <span class="stats-value">+$0.8</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">费用占比</span>
+                    <span class="stats-value">+12.97%</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">多头交易</span>
+                    <span class="stats-value">1 (胜率 +100.00%)</span>
+                </div>
+                <div class="stats-row">
+                    <span class="stats-label">空头交易</span>
+                    <span class="stats-value">0 (胜率 +0.00%)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📅 月度收益热力图</h2>
+            <div class="monthly-grid">
+                <div class="monthly-cell monthly-header">年份</div>
+                <div class="monthly-cell monthly-header">1月</div><div class="monthly-cell monthly-header">2月</div><div class="monthly-cell monthly-header">3月</div><div class="monthly-cell monthly-header">4月</div><div class="monthly-cell monthly-header">5月</div><div class="monthly-cell monthly-header">6月</div><div class="monthly-cell monthly-header">7月</div><div class="monthly-cell monthly-header">8月</div><div class="monthly-cell monthly-header">9月</div><div class="monthly-cell monthly-header">10月</div><div class="monthly-cell monthly-header">11月</div><div class="monthly-cell monthly-header">12月</div>
+                <div class="monthly-cell monthly-header">2025</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div><div class="monthly-cell" style="background:rgba(0, 211, 149, 0.4)" title="2.05%">2.1%</div><div class="monthly-cell" style="background:rgba(255,255,255,0.05)">-</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>📋 交易明细 (最近20笔)</h2>
+            <table class="trades-table">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>方向</th>
+                        <th>入场价</th>
+                        <th>出场价</th>
+                        <th>持仓时间</th>
+                        <th>盈亏</th>
+                        <th>退出原因</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            <td>2025/11/26 23:12:25</td>
+                            <td>🟢 做多</td>
+                            <td>$86555.46</td>
+                            <td>$86858.10</td>
+                            <td>73.2h</td>
+                            <td class="pnl-positive">
+                                +$6.19 (3.10%)
+                            </td>
+                            <td>📊 信号</td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // 权益曲线图表
+        const equityCtx = document.getElementById('equityChart').getContext('2d');
+        new Chart(equityCtx, {
+            type: 'line',
+            data: {
+                labels: ["2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26"],
+                datasets: [{
+                    label: '权益',
+                    data: [10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,9999.1996,10010.466078022753,10001.325170728753,10002.527313316734,10008.339210367092,10015.873407856001,10019.533007311338,10031.323251924237,10031.778679020068,10005.031006437473,10002.582796820796,10010.253391257187,10020.656548268567,10018.92731239201,10002.141240600979,10019.308761482427,10006.288632529517,10009.58296558312,10007.546258621558,9984.363401174864,9986.753815474813,9991.73345996426,9985.602532765552,9989.010144639946,9989.317615724949,9999.558945849487,10012.324775408786,10039.874646987593,10047.827282569626,10038.998469985967,10056.145184553392,10049.084908661669,10046.111917569082,10038.307237997878,10033.93328842776,10025.370334301058,10029.459930912866,10027.395482199274,10039.504756960521,10034.404898212275,10031.757872706046,10017.850007688165,10008.981894289129,10013.968474216585,10017.766782432072,10016.687165915559,10020.356012621573,10010.119306122373,10002.42559355929,10008.239802422317,10011.349190462386,10022.910565621034,10013.996215968615,10005.662131296163,10017.124098510038,10009.326354376839,10023.490830601002,10016.9692070612,10021.88412079591,10029.790520124561,10025.023562400678,10011.522576412575,10013.869066271809,10020.571011199807,10027.101881990286,10030.19508734167,10018.275381219297,10004.850685049276,10007.537011370881,10010.61403403358,10000.254801462916,10011.372308589078,10212.489521421487,10205.492961398739],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { 
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888', maxTicksLimit: 10 }
+                    },
+                    y: {
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888' }
+                    }
+                }
+            }
+        });
+
+        // 回撤曲线图表
+        const drawdownCtx = document.getElementById('drawdownChart').getContext('2d');
+        new Chart(drawdownCtx, {
+            type: 'line',
+            data: {
+                labels: ["2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/20","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/21","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/22","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/23","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/24","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/25","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26","2025/11/26"],
+                datasets: [{
+                    label: '回撤 %',
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.008004000000000814,0,-0.09131350351477333,-0.07930464619872529,-0.0212464398668752,0,0,0,0,-0.26662941277336194,-0.29103395453022524,-0.2145709993373135,-0.11086898054041901,-0.12810656055375777,-0.29543552910583665,-0.12430415319787502,-0.2540929909454627,-0.22125401832644734,-0.24155656911758164,-0.47265075678320345,-0.4488223373529759,-0.3991836376888627,-0.46029869409984875,-0.4263305217206005,-0.42326555094282303,-0.32117667466053396,-0.1939227751502014,0,0,-0.08786787765524766,0,-0.07020857159627963,-0.09977249532675374,-0.17738354238275414,-0.22087883297221222,-0.30603028981328684,-0.2653626528932316,-0.2858918783141556,-0.1654752122953741,-0.21618906591077242,-0.24251153299581937,-0.3808136831999025,-0.46899969519839213,-0.4194123052399086,-0.38164128915193296,-0.39237717747395306,-0.35589354842244114,-0.4576890805207988,-0.534196652974116,-0.4763791816038994,-0.44545890367428476,-0.33049064350629687,-0.4191364365892378,-0.5020119770622693,-0.3880322462258427,-0.4655743261192026,-0.3247203908963874,-0.38957251285878186,-0.34069778358120695,-0.2620752181393774,-0.30947864794670804,-0.4437347246075833,-0.4204008345714881,-0.3537555663797334,-0.2888114882004487,-0.2580521336504011,-0.376583697222914,-0.5100811350944536,-0.4833678540876139,-0.45276942291713335,-0.5557833748892781,-0.4452290131320591,0,-0.06850983795941279],
+                    borderColor: '#ff6b6b',
+                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { 
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888', maxTicksLimit: 10 }
+                    },
+                    y: {
+                        display: true,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        ticks: { color: '#888' },
+                        max: 0
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+        

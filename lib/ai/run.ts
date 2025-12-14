@@ -2,7 +2,7 @@ import { generateObject } from "ai";
 import { generateUserPrompt, getTradingPrompt } from "./prompt";
 import { getCurrentMarketState } from "../trading/current-market-state";
 import { z } from "zod";
-import { deepseekR1, deepseek, deepseekv31 } from "./model";
+import { deepseekR1, deepseek } from "./model";
 import { getAccountInformationAndPerformance } from "../trading/account-information-and-performance";
 import { prisma } from "../prisma";
 import { Opeartion, Symbol } from "@prisma/client";
@@ -15,20 +15,24 @@ import {
   logTrade,
 } from "../trading/risk-control";
 import { setStopLossTakeProfit } from "../trading/stop-loss-take-profit-official";
+import { runMultiAgent } from './run-multi-agent';
 
 /**
  * you can interval trading using cron job
  */
-export async function run(initialCapital?: number) {
+async function legacyRun(initialCapital?: number) {
+  const runId = Date.now(); // 生成唯一 ID 用于追踪
+  console.log(`\n🚀🚀🚀 [RUN ID: ${runId}] Trading bot starting...`);
+
   const riskConfig = getRiskConfig();
 
   // 改进的模式标识
   const modeLabel = riskConfig.tradingMode === 'live'
     ? '⚠️ LIVE (REAL MONEY)'
     : '🎮 VIRTUAL';
-  console.log(`🤖 Mode: ${modeLabel}`);
+  console.log(`🤖 [RUN ${runId}] Mode: ${modeLabel}`);
 
-  
+
   const effectiveInitialCapital = initialCapital;
 
   // Helper function to create trading data with prediction
@@ -89,7 +93,7 @@ export async function run(initialCapital?: number) {
     const maxRetries = 3;
 
     // Use Chat-only model (deepseek) — avoid R1/v3.1 timeouts and errors
-    const currentModel = { name: "Chat", model: deepseek, timeout: 60000 };
+    const currentModel = { name: "Chat", model: deepseek, timeout: 120000 };  // Increased to 120s
     try {
       const startTime = Date.now();
       console.log(`🤖 AI ${currentModel.name} (1/1)...`);
@@ -153,6 +157,11 @@ export async function run(initialCapital?: number) {
 
       // For native DeepSeek add mode=json
       aiCallConfig.mode = "json";
+
+      // Ensure deterministic-ish outputs for trading decisions
+      // 设置 temperature，通过环境变量 AI_TEMPERATURE 控制，默认 0.3
+      const _temp = parseFloat(process.env.AI_TEMPERATURE ?? process.env.NEXT_PUBLIC_AI_TEMPERATURE ?? "0.3");
+      aiCallConfig.temperature = isNaN(_temp) ? 0.3 : _temp;
 
       const aiCallPromise = generateObject(aiCallConfig);
       const timeoutPromise = new Promise((_, reject) => {
@@ -232,14 +241,30 @@ export async function run(initialCapital?: number) {
     // Track remaining available cash for multi-buy margin planning
     let remainingAvailableCash = accountInformationAndPerformance.availableCash;
 
+    // 🔧 收集所有交易记录，最后统一保存到一条 chat
+    const allTradingRecords: any[] = [];
+    const allChatMessages: string[] = [];
+
     // Process each decision sequentially
     for (const decision of decisions) {
       const object = decision;
       console.log(`\n📌 ${object.opeartion} ${object.symbol}`);
 
+      // 添加该币种的决策说明到消息列表
+      if (object.chat) {
+        allChatMessages.push(`[${object.symbol}] ${object.chat}`);
+      }
+
       if (object.opeartion === Opeartion.Buy) {
         if (!object.buy || object.buy.pricing == null || object.buy.amount == null || object.buy.leverage == null) {
           console.warn("⚠️ Buy: missing required fields");
+          // 记录失败的决策
+          allTradingRecords.push(createTradingData(object, {
+            opeartion: Opeartion.Hold,
+            pricing: object.buy?.pricing || null,
+            amount: object.buy?.amount || null,
+            leverage: object.buy?.leverage || null,
+          }));
           continue;
         }
 
@@ -258,36 +283,20 @@ export async function run(initialCapital?: number) {
 
         if (!riskCheck.allowed) {
           console.error(`🚫 Risk control: ${riskCheck.reason}`);
-          await prisma.chat.create({
-            data: {
-              reasoning: reasoning || "<no reasoning>",
-              chat: `[BLOCKED BY RISK CONTROL] ${riskCheck.reason}\n\nOriginal AI decision: ${object.chat}`,
-              userPrompt,
-              tradings: {
-                create: createTradingData(object, {
-                  pricing: object.buy.pricing,
-                  amount: object.buy.amount,
-                  leverage: object.buy.leverage,
-                }),
-              },
-            },
-          });
+          allChatMessages.push(`[${object.symbol} BLOCKED] ${riskCheck.reason}`);
+          allTradingRecords.push(createTradingData(object, {
+            pricing: object.buy.pricing,
+            amount: object.buy.amount,
+            leverage: object.buy.leverage,
+          }));
           continue;
         }
 
         if (requiredMargin > remainingAvailableCash) {
           const reason = `Insufficient remaining margin for multi-order batch: need $${requiredMargin.toFixed(2)} but have $${remainingAvailableCash.toFixed(2)}`;
           console.warn(`🚫 ${reason}`);
-          await prisma.chat.create({
-            data: {
-              reasoning: reasoning || "<no reasoning>",
-              chat: `[BLOCKED: INSUFFICIENT MARGIN] ${reason}\n\nOriginal AI decision: ${object.chat}`,
-              userPrompt,
-              tradings: {
-                create: createTradingData(object, { opeartion: Opeartion.Hold }),
-              },
-            },
-          });
+          allChatMessages.push(`[${object.symbol} BLOCKED] ${reason}`);
+          allTradingRecords.push(createTradingData(object, { opeartion: Opeartion.Hold }));
           continue;
         }
 
@@ -328,33 +337,40 @@ export async function run(initialCapital?: number) {
           remainingAvailableCash -= requiredMargin; // deduct committed margin
         }
 
-        // Record trade in database
-        await prisma.chat.create({
-          data: {
-            reasoning: reasoning || "<no reasoning>",
-            chat: object.chat || "<no chat>",
-            userPrompt,
-            tradings: {
-              create: createTradingData(object, {
-                pricing: buyResult.executedPrice || object.buy.pricing,
-                amount: buyResult.executedAmount || object.buy.amount,
-                leverage: object.buy.leverage,
-              }),
-            },
-          },
-        });
+        // 🔧 收集交易记录，不立即保存
+        allTradingRecords.push(createTradingData(object, {
+          pricing: buyResult.executedPrice || object.buy.pricing,
+          amount: buyResult.executedAmount || object.buy.amount,
+          leverage: object.buy.leverage,
+        }));
         continue;
       }
 
       if (object.opeartion === Opeartion.Sell) {
         if (!object.sell || object.sell.percentage == null) {
           console.warn("⚠️ Sell: missing percentage");
+          // 记录失败的决策
+          allTradingRecords.push(createTradingData(object, { opeartion: Opeartion.Hold }));
           continue;
         }
 
         // Execute or simulate sell
         let sellResult;
         const tradingSymbol = `${object.symbol}/USDT`;
+
+        // 🔧 在卖出前先获取持仓信息，以便记录 leverage 和当前持仓数量
+        let positionInfo = null;
+        try {
+          const { fetchPositions } = await import("@/lib/trading/positions");
+          const positions = await fetchPositions();
+          const binanceSymbol = tradingSymbol.replace("/", "");
+          positionInfo = positions.find((p: any) => p.symbol === binanceSymbol && p.contracts !== 0);
+          if (positionInfo) {
+            console.log(`📊 Current position: ${Math.abs(positionInfo.contracts)} contracts @ ${positionInfo.leverage}x leverage`);
+          }
+        } catch (err) {
+          console.warn("⚠️ Failed to fetch position info before sell:", err);
+        }
 
         // 🔧 修复：dry-run模式下也要真正执行卖出（在测试网）
         console.log(`💸 Executing sell ${object.symbol} (${object.sell.percentage}%) (Mode: ${riskConfig.tradingMode})...`);
@@ -384,19 +400,12 @@ export async function run(initialCapital?: number) {
           reason: sellResult.success ? "Success" : sellResult.error,
         });
 
-        await prisma.chat.create({
-          data: {
-            reasoning: reasoning || "<no reasoning>",
-            chat: object.chat || "<no chat>",
-            userPrompt,
-            tradings: {
-              create: createTradingData(object, {
-                pricing: sellResult.executedPrice,
-                amount: sellResult.executedAmount || 0,
-              }),
-            },
-          },
-        });
+        // 🔧 收集交易记录，不立即保存
+        allTradingRecords.push(createTradingData(object, {
+          pricing: sellResult.executedPrice,
+          amount: sellResult.executedAmount || 0,
+          leverage: positionInfo?.leverage || null, // 🔧 从持仓信息中获取杠杆
+        }));
         continue;
       }
 
@@ -429,29 +438,50 @@ export async function run(initialCapital?: number) {
           }
         }
 
-        await prisma.chat.create({
-          data: {
-            reasoning: reasoning || "<no reasoning>",
-            chat: object.chat || "<no chat>",
-            userPrompt,
-            tradings: {
-              create: createTradingData(object, {
-                stopLoss: shouldAdjustProfit
-                  ? object.adjustProfit!.stopLoss
-                  : undefined,
-                takeProfit: shouldAdjustProfit
-                  ? object.adjustProfit!.takeProfit
-                  : undefined,
-              }),
-            },
-          },
-        });
-
-        console.log(`⏸️ Hold ${object.symbol}`);
+        // 🔧 收集 Hold 决策记录
+        allTradingRecords.push(createTradingData(object, {
+          stopLoss: object.adjustProfit?.stopLoss || null,
+          takeProfit: object.adjustProfit?.takeProfit || null,
+        }));
+        continue;
       }
     }
+
+    // 🔧 循环结束后，统一创建一条 chat 记录，包含所有交易
+    const combinedChat = allChatMessages.length > 0
+      ? allChatMessages.join("\n\n")
+      : "<no chat>";
+
+    console.log(`\n💾 [RUN ${runId}] Saving chat record with ${allTradingRecords.length} trading decisions...`);
+
+    await prisma.chat.create({
+      data: {
+        reasoning: reasoning || "<no reasoning>",
+        chat: combinedChat,
+        userPrompt,
+        tradings: {
+          create: allTradingRecords,
+        },
+      },
+    });
+
+    console.log(`✅ [RUN ${runId}] Saved ${allTradingRecords.length} trading decision(s) to database`);
+
   } catch (error) {
-    console.error("❌ Trading error:", error);
+    console.error(`❌ [RUN ${runId}] Trading error:`, error);
     throw error;
   }
+}
+
+/**
+ * 主入口 run: 默认使用多Agent系统（更强、更一致）。
+ * 设置环境变量 USE_SINGLE_AGENT=true 可切回单Agent兼容模式。
+ */
+export async function run(initialCapital?: number) {
+  if (process.env.USE_SINGLE_AGENT === 'true') {
+    console.log('⚠️ Running legacy single-agent (DeepSeek) mode because USE_SINGLE_AGENT=true');
+    return legacyRun(initialCapital);
+  }
+  // 采用多Agent系统
+  return runMultiAgent(initialCapital);
 }

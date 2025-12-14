@@ -40,11 +40,11 @@ model Trading {
 
   symbol     Symbol
   opeartion  Opeartion
-  leverage   Int?
-  amount     Int?
-  pricing    Int?
-  stopLoss   Int?
-  takeProfit Int?
+  leverage   Float?  // 改为 Float 以支持小数杠杆
+  amount     Float?  // 改为 Float 以支持小数数量（如 0.001 BTC）
+  pricing    Float?  // 改为 Float 以支持小数价格
+  stopLoss   Float?  // 改为 Float 以支持小数止损价格
+  takeProfit Float?  // 改为 Float 以支持小数止盈价格
   
   // K线趋势预测数据（JSON格式）
   // 包含: short_term_trend, confidence, key_levels (support/resistance), analysis
@@ -55,6 +55,10 @@ model Trading {
 
   Chat   Chat?   @relation(fields: [chatId], references: [id], onDelete: Cascade)
   chatId String?
+  
+  // 关联到多Agent决策记录
+  tradingDecisionId String?
+  tradingDecision   TradingDecision? @relation(fields: [tradingDecisionId], references: [id])
   
   // Learning feedback relation
   lessons TradingLesson[]
@@ -86,6 +90,15 @@ model TradingLesson {
   @@index([symbol])
 }
 
+enum ModelType {
+  Deepseek
+  DeepseekThinking
+  Qwen
+  Doubao
+  Gemini
+  Kimi
+}
+
 enum Opeartion {
   Buy
   Sell
@@ -103,11 +116,67 @@ enum Symbol {
   MATIC
   AVAX
   LINK
+  MSFT
+  NVDA
 }
 
-enum ModelType {
-  Deepseek
-  DeepseekThinking
-  Qwen
-  Doubao
+// 多Agent讨论系统的交易决策记录
+model TradingDecision {
+  id String @id @default(uuid())
+  
+  timestamp DateTime @default(now())
+  
+  // 市场快照数据
+  marketSnapshot Json  // 当时的完整市场数据(来自current-market-state)
+  pdfSummaries   Json? // 两份PDF的关键摘要
+  
+  // 3个Agent的完整讨论记录
+  techAnalysis        Json  // DeepSeek的完整讨论(所有轮次)
+  fundamentalAnalysis Json  // Gemini的完整讨论(所有轮次)
+  sentimentAnalysis   Json  // Qwen的完整讨论(所有轮次)
+  
+  // 决策Agent的输出
+  finalDecision Json  // Kimi-k2的最终决策和推理
+  
+  // 交易结果（平仓后填充）
+  actualProfitLoss Float?         // 实际盈亏
+  closeTimestamp   DateTime?       // 平仓时间
+  closeReason      String?         // 止盈/止损/手动/超时
+  
+  // 反馈分析（平仓后由Kimi-k2生成）
+  postAnalysis Json? // 事后分析结果
+  
+  // 关联的实际交易记录
+  relatedTrades Trading[]
+  
+  // Agent学习记录
+  agentLearnings AgentLearning[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([timestamp])
+  @@index([closeTimestamp])
+}
+
+// Agent学习记录（每个Agent的错误分析）
+model AgentLearning {
+  id String @id @default(uuid())
+  
+  agentName String  // DeepSeek/Gemini/Qwen/Kimi
+  
+  // 关联的决策
+  tradeDecisionId String
+  tradeDecision   TradingDecision @relation(fields: [tradeDecisionId], references: [id], onDelete: Cascade)
+  
+  // 错误分析
+  errorType        String  // 过度乐观/忽视技术面/误判情绪等
+  errorDescription String  @db.Text // 详细描述
+  lessonLearned    String  @db.Text // 应该记住的教训
+  
+  timestamp DateTime @default(now())
+  
+  @@index([agentName])
+  @@index([timestamp])
+  @@index([errorType])
 }

@@ -11,24 +11,13 @@ const deepseekModel = createDeepSeek({
   fetch: (url, init) => {
     return fetch(url, {
       ...init,
-      // @ts-ignore - agent is valid but not in types
+      // @ts-expect-error - agent is valid but not in types
       agent: proxyAgent,
     });
   },
 });
 
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  fetch: (url, init) => {
-    return fetch(url, {
-      ...init,
-      // @ts-ignore - agent is valid but not in types
-      agent: proxyAgent,
-    });
-  },
-});
 
-export const deepseekv31 = openrouter("deepseek/deepseek-v3.2-exp");
 
 export const deepseekR1 = deepseekModel("deepseek-reasoner");
 

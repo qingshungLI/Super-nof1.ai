@@ -1,5 +1,6 @@
 import { getBinanceInstance, ensureTimeSync, getBinanceBaseUrl } from "./binance-official";
 import { setStopLossTakeProfit } from "./stop-loss-take-profit-official";
+import { adjustPrecision, getMinAmount, checkMinNotional, dynamicPrecisionCache, SYMBOL_PRECISION } from "./precision";
 import crypto from 'crypto';
 
 // Cache for position mode (dual side or one-way)
@@ -87,57 +88,6 @@ export interface BuyResult {
 }
 
 /**
- * Binance Futures 合约的精度配�?
- * 数量精度 (quantity) 决定最小可交易数量
- * 注意:测试网精度可能与实盘不同
- */
-const SYMBOL_PRECISION: Record<string, { quantity: number; price: number; minNotional: number }> = {
-    "BTCUSDT": { quantity: 3, price: 1, minNotional: 5 },   // 0.001 BTC, 最�?5
-    "ETHUSDT": { quantity: 2, price: 2, minNotional: 5 },   // 0.01 ETH, 最�?5
-    "BNBUSDT": { quantity: 1, price: 2, minNotional: 5 },   // 0.1 BNB, 最�?5
-    "SOLUSDT": { quantity: 0, price: 3, minNotional: 5 },   // 1 SOL (整数), 最�?5 - 测试网精�?
-    "ADAUSDT": { quantity: 0, price: 4, minNotional: 5 },   // 1 ADA, 最�?5
-    "DOGEUSDT": { quantity: 0, price: 5, minNotional: 5 },  // 1 DOGE, 最�?5 🐕
-};
-
-/**
- * 调整数量精度以符�?Binance 要求
- */
-function adjustPrecision(amount: number, symbol: string): number {
-    const config = SYMBOL_PRECISION[symbol] || { quantity: 3, price: 2, minNotional: 5 };
-    const factor = Math.pow(10, config.quantity);
-    const adjusted = Math.floor(amount * factor) / factor;
-
-    if (adjusted !== amount) {
-        console.log(`⚙️ Precision adjusted: ${amount} �?${adjusted} (${config.quantity} decimals)`);
-    }
-
-    return adjusted;
-}
-
-/**
- * 检查订单是否满足最小名义价值要�?
- */
-function checkMinNotional(amount: number, symbol: string, price?: number): { valid: boolean; reason?: string } {
-    const config = SYMBOL_PRECISION[symbol] || { quantity: 3, price: 2, minNotional: 5 };
-
-    // 如果没有提供价格,跳过检�?市价单在执行时会检�?
-    if (!price) {
-        return { valid: true };
-    }
-
-    const notional = amount * price;
-    if (notional < config.minNotional) {
-        return {
-            valid: false,
-            reason: `Order value $${notional.toFixed(2)} below minimum $${config.minNotional}`
-        };
-    }
-
-    return { valid: true };
-}
-
-/**
  * Execute a buy order on Binance Futures
  * @param params Buy order parameters
  * @returns Buy result with order details or error
@@ -166,6 +116,9 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
         return { success: false, error: "Leverage must be between 1 and 30" };
     }
 
+    // 用于错误日志的变量
+    let finalQuantity = amount; // 默认值，会在后续更新
+
     try {
         // 🔄 每次交易前先同步服务器时�?
         await ensureTimeSync();
@@ -188,12 +141,17 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
             }
         }
 
-        // 调整数量精度
-        let adjustedAmount = adjustPrecision(amount, binanceSymbol);
-        const minAmount = Math.pow(10, -(SYMBOL_PRECISION[binanceSymbol]?.quantity || 3));
+        // 调整数量精度（使用动态获取的精度）
+        let adjustedAmount = await adjustPrecision(amount, binanceSymbol, client);
+        console.log(`📊 [buy.ts] After precision adjustment: ${amount} → ${adjustedAmount}`);
 
-        // 🎯 智能处理小订�? 自动放大杠杆或建议放�?
-        let effectiveLeverage = leverage; // 实际使用的杠�?
+        // 获取最小数量（也使用动态精度）
+        const precisionConfig = dynamicPrecisionCache[binanceSymbol] || SYMBOL_PRECISION[binanceSymbol] || { quantity: 3 };
+        const minAmount = Math.pow(10, -(precisionConfig.quantity || 3));
+        console.log(`📊 [buy.ts] Min amount for ${symbol}: ${minAmount}, precision config:`, precisionConfig);
+
+        // 🎯 智能处理小订单：自动放大杠杆或建议放弃
+        let effectiveLeverage = leverage; // 实际使用的杠杆
         if (adjustedAmount === 0 || adjustedAmount < minAmount) {
             console.log(`⚠️ Amount ${amount} too small (min: ${minAmount})`);
 
@@ -274,9 +232,19 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
         // Prepare order parameters
         const orderType = price ? "LIMIT" : "MARKET";
 
-        // 🔧 orderParams 只包含额外参数，不包�?symbol/side/type（这些通过函数参数传递）
+        // �️ 最终精度安全检查：确保数量是整数（对于 SOL 等币种）
+        const finalPrecisionConfig = dynamicPrecisionCache[binanceSymbol] || SYMBOL_PRECISION[binanceSymbol] || { quantity: 3 };
+        const finalQuantity = Math.floor(adjustedAmount * Math.pow(10, finalPrecisionConfig.quantity)) / Math.pow(10, finalPrecisionConfig.quantity);
+
+        if (finalQuantity !== adjustedAmount) {
+            console.warn(`⚠️ Final precision correction: ${adjustedAmount} → ${finalQuantity}`);
+        }
+
+        console.log(`🎯 Final order quantity: ${finalQuantity} ${symbol} (precision: ${finalPrecisionConfig.quantity} decimals)`);
+
+        // �🔧 orderParams 只包含额外参数，不包含 symbol/side/type（这些通过函数参数传递）
         const orderParams: any = {
-            quantity: adjustedAmount.toString(),
+            quantity: finalQuantity.toString(),
         };
 
         // Only set positionSide for DUAL_SIDE mode (双向持仓)
@@ -293,15 +261,24 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
             orderParams.timeInForce = "GTC"; // Good Till Cancelled
         }
 
-        console.log(`📝 Creating ${orderType} buy order: ${adjustedAmount} ${symbol} (original: ${amount}) at ${price || 'market price'} with ${effectiveLeverage}x leverage`);
+        console.log(`📝 Creating ${orderType} buy order: ${finalQuantity} ${symbol} (original: ${amount}) at ${price || 'market price'} with ${effectiveLeverage}x leverage`);
 
         let orderResult;
         let lastError;
+
+        // 记录实际发送的数量，用于错误日志
+        let sentQuantity = finalQuantity;
 
         // Retry up to 3 times with increasing delays
         for (let attempt = 1; attempt <= 3; attempt++) {
             try {
                 console.log(`🔄 Buy order attempt ${attempt}/3...`);
+
+                // 🔄 网络错误前重新同步时间
+                if (attempt > 1) {
+                    console.log(`⏰ Re-syncing server time before retry...`);
+                    await ensureTimeSync();
+                }
 
                 // Binance SDK requires: newOrder(symbol, side, type, options)
                 // Not just newOrder(options)!
@@ -313,16 +290,48 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
                 );
 
                 orderResult = response.data;
-                console.log(`�?Buy order created successfully on attempt ${attempt}`);
+                console.log(`✅ Buy order created successfully on attempt ${attempt}`);
                 break; // Success, exit loop
             } catch (orderError: any) {
                 lastError = orderError;
                 const errorMsg = orderError?.response?.data?.msg || orderError.message;
+                const errorCode = orderError?.code || orderError?.response?.data?.code;
+
                 console.warn(`⚠️ Buy order attempt ${attempt} failed: ${errorMsg}`);
+                if (errorCode) {
+                    console.warn(`   - Error code: ${errorCode}`);
+                }
+
+                // 判断是否为网络错误（可重试）
+                const isNetworkError =
+                    errorCode === 'ECONNRESET' ||
+                    errorCode === 'ETIMEDOUT' ||
+                    errorCode === 'ENOTFOUND' ||
+                    errorCode === 'ECONNREFUSED' ||
+                    errorMsg.includes('socket') ||
+                    errorMsg.includes('network') ||
+                    errorMsg.includes('TLS') ||
+                    errorMsg.includes('timeout');
+
+                // 判断是否为业务错误（不可重试）
+                const isBusinessError =
+                    errorMsg.includes('Precision') ||
+                    errorMsg.includes('insufficient') ||
+                    errorMsg.includes('Invalid') ||
+                    errorMsg.includes('Filter failure');
+
+                if (isBusinessError) {
+                    console.error(`❌ Business error detected, no retry: ${errorMsg}`);
+                    throw orderError; // 立即抛出，不重试
+                }
 
                 if (attempt < 3) {
-                    const delay = attempt * 3000; // Increasing delay: 3s, 6s
-                    console.log(`�?Retrying in ${delay}ms...`);
+                    // 网络错误使用指数退避
+                    const delay = isNetworkError
+                        ? Math.min(Math.pow(2, attempt + 1) * 1000, 10000) // 4s, 8s (最多10s)
+                        : attempt * 3000; // 其他错误: 3s, 6s
+
+                    console.log(`⏳ ${isNetworkError ? 'Network error' : 'Error'} - retrying in ${delay}ms...`);
                     await new Promise(resolve => setTimeout(resolve, delay));
                 } else {
                     throw orderError; // Last attempt failed, throw error
@@ -408,10 +417,11 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
         };
     } catch (error: any) {
         const errorMessage = error.message || "Unknown error occurred during buy";
-        console.error("�?Buy order failed:", errorMessage);
+        console.error("❌ Buy order failed:", errorMessage);
         console.error("📋 Error details:", {
             symbol,
-            amount,
+            amountOriginal: amount,
+            amountSent: finalQuantity,
             leverage,
             price,
             errorType: error.constructor?.name,
