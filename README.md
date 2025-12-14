@@ -261,71 +261,100 @@ npm install
    使用任意文本编辑器打开 `.env` 文件，填写以下配置：
 
    ```env
-   # ==========================================
-   # 数据库配置
-   # ==========================================
-   # 格式：postgresql://用户名:密码@主机:端口/数据库名
-   DATABASE_URL="postgresql://trading_user:your_secure_password@localhost:5432/trading_db"
+  
+     DATABASE_URL="postgresql://postgres:#@localhost:5432/nof1"
+   #（上方的URL用你的密码替换#即可，nof1是数据库名称，如果你的数据库不叫nof1，要修改成真实名称）
    
-   # 如果使用 postgres 用户：
-   # DATABASE_URL="postgresql://postgres:your_postgres_password@localhost:5432/trading_db"
-
-   # ==========================================
-   # 币安 API 配置（重要更新！）
-   # ==========================================
+   # ============================================
+   # 代理配置 / Proxy Configuration
+   # ============================================
+   # 如果你在中国大陆,需要配置代理才能访问 Binance API，需要注意必须是非中非美ip（如日本新加坡）
+   # 常见代理端口: Clash: 7890, V2Ray: 10809
+   HTTP_PROXY="http://127.0.0.1:7890"
+   BINANCE_HTTP_PROXY="http://127.0.0.1:7890"
+   #此处如果用V2Ray需要自行修改
    
-   # 虚拟盘 API 配置
-   BINANCE_TESTNET_API_KEY="你的虚拟盘API密钥"
-   BINANCE_TESTNET_API_SECRET="你的虚拟盘API密钥Secret"
+   # ============================================
+   # 币安 API 配置 / Binance API Configuration
+   # ============================================
+   
+   # 虚拟盘 API 配置 / Testnet API Configuration
+   # 获取地址: https://testnet.binancefuture.com/
+   BINANCE_TESTNET_API_KEY="your-testnet-api-key-here"
+   BINANCE_TESTNET_API_SECRET="your-testnet-api-secret-here"
    BINANCE_TESTNET_BASE_URL="https://demo-fapi.binance.com"
-
-   # 实盘 API 配置
-   BINANCE_LIVE_API_KEY="你的实盘API密钥"
-   BINANCE_LIVE_API_SECRET="你的实盘API密钥Secret"
+   
+   # 实盘 API 配置 / Live Trading API Configuration
+   # ⚠️ 警告：实盘涉及真实资金，请谨慎配置！
+   # 获取地址: https://www.binance.com/zh-CN/my/settings/api-management
+   BINANCE_LIVE_API_KEY="your-live-api-key-here"
+   BINANCE_LIVE_API_SECRET="your-live-api-secret-here"
    BINANCE_LIVE_BASE_URL="https://fapi.binance.com"
-
-   # 交易模式：dry-run（虚拟盘）或 live（实盘）
-   # 💡 只需修改这一个参数即可切换模式！系统会自动使用对应的 API 配置
+   
+   # API 请求超时时间
+   BINANCE_FETCH_TIMEOUT_MS="25000"
+   
+   
+   # ⚠️ 重要: 只需修改这一个参数即可切换模式，无需修改其他配置
+   #    IMPORTANT: Just change this parameter to switch modes, no need to change other configs
    TRADING_MODE="dry-run"
-
-   # ==========================================
-   # 代理配置（可选）
-   # ==========================================
-   # 如果需要通过代理访问币安 API
-   BINANCE_HTTP_PROXY=http://127.0.0.1:7890
-   # 如果不需要代理，设置为 true
-   # BINANCE_DISABLE_PROXY=true
-
-   # ==========================================
-   # AI 模型配置
-   # ==========================================
-   # DeepSeek API Key（推荐）
-   DEEPSEEK_API_KEY="你的DeepSeek密钥"
-
-   # ==========================================
-   # 应用配置（必需）
-   # ==========================================
+   #目前是dry-run模式,可以修改为live模式，但请谨慎操作
+   
+   # Risk Control Parameters (适用于虚拟盘和实盘 / Apply to both virtual and live trading)
+   MAX_POSITION_SIZE_USDT=5000  # 最大持仓Maximum position size in USDT (increased for aggressive strategy)
+   MAX_LEVERAGE=30  # 最大杠杆Maximum allowed leverage (increased to 30x for high-yield strategy)
+   DAILY_LOSS_LIMIT_PERCENT=20  # 最大日损失限制Daily loss limit as percentage of capital (20% for aggressive trading)
+   
+   # ============================================
+   # AI 模型配置 / AI Model Configuration
+   # ============================================
+   
+   # DeepSeek（技术分析师 / Technical Analyst）
+   DEEPSEEK_API_KEY="your-deepseek-api-key-here"
+   
+   # Google Gemini 2.5 Pro（基本面分析师 / Fundamental Analyst）
+   # 获取地址: https://aistudio.google.com/app/apikey
+   GOOGLE_API_KEY="AIzaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   
+   # Qwen Plus（情绪分析师 / Sentiment Analyst）
+   # 获取地址: https://dashscope.console.aliyun.com/apiKey
+   QWEN_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   
+   # Kimi k2（最终决策者 / Decision Maker）
+   # 获取地址: https://platform.moonshot.cn/console/api-keys
+   KIMI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   
+   # OpenRouter API Key（可选，作为备用，一般不用就行）
+   # OPENROUTER_API_KEY="sk-167c49fa9eb949a2bfc6a542897d02df"
+   
+   # ============================================
+   # 多Agent系统配置 / Multi-Agent System Config
+   # ============================================
+   
+   # PDF文档路径（分析数据源）
+   MARKET_ANALYSIS_PDF="app/pdf/market-analyse.pdf"
+   MOOD_ANALYSIS_PDF="app/pdf/mood-analyse.pdf"
+   
+   # 性能与超时配置（已优化平衡速度与可靠性）
+   # Performance and Timeout Configuration (Optimized for balance)
+   AGENT_TIMEOUT=18000             # 单个Agent响应超时（毫秒）- 18秒给LLM足够处理时间
+   DEEPSEEK_TIMEOUT=18000          # DeepSeek专用超时（可选，默认使用AGENT_TIMEOUT）
+   GEMINI_TIMEOUT=18000            # Gemini专用超时（可选，默认使用AGENT_TIMEOUT）
+   QWEN_TIMEOUT=18000              # Qwen专用超时（可选，默认使用AGENT_TIMEOUT）
+   KIMI_TIMEOUT=20000              # Kimi决策者超时（稍长，因为需要综合分析）
+   
+   FORUM_TIMEOUT=60000             # 整个论坛讨论超时（毫秒）
+   MAX_HISTORY_LESSONS=20          # 每个Agent加载的历史教训数量
+   MAX_FORUM_ROUNDS=3              # 最大讨论轮次
+   CONSENSUS_THRESHOLD=0.66        # 共识阈值（0.66 = 2/3一致）
+   
+   # ============================================
+   # 应用配置 / Application Configuration
+   # ============================================
    NEXT_PUBLIC_URL="http://localhost:3000"
-   CRON_SECRET_KEY="abc123secretkey_change_this_in_production"
-   DEEPSEEK_API_KEY="你的DeepSeek密钥"
-
-   # 或使用 OpenRouter
-   OPENROUTER_API_KEY="你的OpenRouter密钥"
-
-   # ==========================================
-   # 交易配置
-   # ==========================================
-   # 初始资金（虚拟盘使用）
-   START_MONEY=10000
-
-   # 显示 AI 提示词（调试用）
-   # SHOW_PROMPT_PREVIEW=true
-
-   # ==========================================
-   # 其他配置
-   # ==========================================
-   NODE_ENV=development
-   ```
+   CRON_SECRET_KEY="secretkey_change_this_in_production"
+   
+   NODE_ENV="development"
 
 ### 第 9 步：初始化数据库
 
