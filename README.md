@@ -378,7 +378,7 @@ npx prisma studio
 
 ```bash
 # 开发模式启动
-npm run dev
+npm run dev:all
 
 # 或使用 yarn
 yarn dev
@@ -443,7 +443,7 @@ TRADING_MODE="live"
 ```bash
 # 停止当前运行（Ctrl+C）
 # 重新启动
-npm run dev
+npm run dev:all
 ```
 
 ### 模拟交易（推荐新手）
@@ -461,7 +461,7 @@ npm run dev
 
 2. **启动应用**
    ```bash
-   npm run dev
+   npm run dev:all
    ```
 
 3. **观察日志**
@@ -503,7 +503,7 @@ npm run dev
    ```bash
    # 停止当前运行（Ctrl+C）
    # 重新启动
-   npm run dev
+   npm run dev:all
    ```
 
 4. **确认模式**
@@ -533,7 +533,7 @@ npm run dev
    ```bash
    # 停止当前运行（Ctrl+C）
    # 重新启动
-   npm run dev
+   npm run dev:all
    ```
 
 4. **确认模式**
@@ -951,7 +951,7 @@ taskkill /PID <PID号> /F
 lsof -ti:3000 | xargs kill -9
 
 # 或使用其他端口
-PORT=3001 npm run dev
+PORT=3001 npm run dev:all
 ```
 
 ### 5. Prisma 客户端未生成
@@ -997,7 +997,7 @@ openssl rand -base64 32
 # 1. 确认 .env 文件已保存
 # 2. 停止应用（Ctrl+C）
 # 3. 重新启动
-npm run dev
+npm run dev:all
 
 # 4. 查看日志确认
 # 虚拟盘应显示: 🎮 Trading Mode: DRY-RUN (Virtual Trading)
