@@ -173,9 +173,10 @@ export async function runMultiAgent(initialCapital?: number) {
 
         // 5. 执行交易决策
         const decision = finalDecision.decision;
+        const normalizedDecision = (decision || '').toString().toLowerCase();
         console.log(`\n🎯 最终决策: ${decision} (信心 ${finalDecision.confidence}%)`);
 
-        if (decision === 'Hold') {
+        if (normalizedDecision === 'hold') {
             console.log('⏸️  保持观望，不执行交易');
             return;
         }
@@ -201,13 +202,37 @@ export async function runMultiAgent(initialCapital?: number) {
         console.log(`📍 目标币种: ${targetMarket.symbol}`);
 
         // 风险检查
-        if (decision === 'Buy') {
+        if (normalizedDecision === 'buy') {
             const currentPrice = targetMarket.data.current_price;
+
+            // 确保满足 Binance 最小名义价值要求 (100 USDT)
+            const MIN_NOTIONAL = 100; // USDT
+            let adjustedAmount = amount || 0.001;
+            let adjustedLeverage = leverage || 10;
+
+            const notionalValue = adjustedAmount * currentPrice * adjustedLeverage;
+
+            if (notionalValue < MIN_NOTIONAL) {
+                // 优先增加杠杆（最高30x）
+                const requiredLeverage = Math.ceil(MIN_NOTIONAL / (adjustedAmount * currentPrice));
+                if (requiredLeverage <= 30) {
+                    adjustedLeverage = requiredLeverage;
+                    console.log(`📊 调整杠杆: ${leverage || 10}x → ${adjustedLeverage}x 以满足最小名义价值 $${MIN_NOTIONAL}`);
+                } else {
+                    // 如果杠杆不够，增加数量
+                    adjustedAmount = MIN_NOTIONAL / (currentPrice * adjustedLeverage);
+                    console.log(`📊 调整数量: ${amount || 0.001} → ${adjustedAmount.toFixed(6)} ${targetMarket.symbol.split('/')[0]} 以满足最小名义价值 $${MIN_NOTIONAL}`);
+                }
+
+                const newNotional = adjustedAmount * currentPrice * adjustedLeverage;
+                console.log(`💰 名义价值: $${notionalValue.toFixed(2)} → $${newNotional.toFixed(2)}`);
+            }
+
             const riskConfig = getRiskConfig();
             const riskCheck = checkBuyRisk({
-                amount: amount || 0.001,
+                amount: adjustedAmount,
                 price: currentPrice,
-                leverage: leverage || 10,
+                leverage: adjustedLeverage,
                 currentBalance: accountInfo.availableCash,
                 config: riskConfig
             });
@@ -219,11 +244,11 @@ export async function runMultiAgent(initialCapital?: number) {
 
             console.log(`✅ 风险检查通过，执行买入...`);
 
-            // 执行买入
+            // 执行买入 - 直接使用字符串格式 symbol (e.g., 'BTC/USDT')
             const tradeResult = await buy({
-                symbol: mapSymbolToEnum(targetMarket.symbol),
-                amount: amount || 0.001,
-                leverage: leverage || 10
+                symbol: targetMarket.symbol,
+                amount: adjustedAmount,
+                leverage: adjustedLeverage
             });
 
             if (tradeResult.success && tradeResult.orderId) {
@@ -234,7 +259,7 @@ export async function runMultiAgent(initialCapital?: number) {
                     pushTradeExecuted({
                         symbol: targetMarket.symbol,
                         action: 'buy',
-                        amount: amount || 0.001,
+                        amount: adjustedAmount,
                         price: currentPrice,
                         orderId: tradeResult.orderId,
                         timestamp: Date.now()
@@ -247,7 +272,7 @@ export async function runMultiAgent(initialCapital?: number) {
                 if (stopLoss || takeProfit) {
                     try {
                         await setStopLossTakeProfit({
-                            symbol: mapSymbolToEnum(targetMarket.symbol),
+                            symbol: targetMarket.symbol,
                             stopLoss,
                             takeProfit
                         });
@@ -262,8 +287,8 @@ export async function runMultiAgent(initialCapital?: number) {
                     data: {
                         symbol: mapSymbolToEnum(targetMarket.symbol),
                         opeartion: Opeartion.Buy,
-                        amount: amount || 0.001,
-                        leverage: leverage || 10,
+                        amount: adjustedAmount,
+                        leverage: adjustedLeverage,
                         pricing: currentPrice,
                         stopLoss,
                         takeProfit,
@@ -274,18 +299,22 @@ export async function runMultiAgent(initialCapital?: number) {
                 logTrade({
                     symbol: targetMarket.symbol,
                     action: 'buy',
-                    amount: amount || 0.001,
+                    amount: adjustedAmount,
                     price: currentPrice,
-                    leverage: leverage || 10,
+                    leverage: adjustedLeverage,
                     reason: (finalDecision.reasoning || '').substring(0, 200)
                 });
+            } else {
+                console.error(`❌ 买入失败:`, tradeResult.error || 'Unknown error', tradeResult);
+                return;
             }
-        } else if (decision === 'Sell') {
+        } else if (normalizedDecision === 'sell') {
             // 卖出逻辑（做空）
             console.log(`🔽 执行卖出（做空）...`);
 
+            // 执行卖出 - 直接使用字符串格式 symbol (e.g., 'BTC/USDT')
             const tradeResult = await sell({
-                symbol: mapSymbolToEnum(targetMarket.symbol),
+                symbol: targetMarket.symbol,
                 amount: amount || 0.001
             });
 
@@ -326,6 +355,9 @@ export async function runMultiAgent(initialCapital?: number) {
                     price: targetMarket.data.current_price,
                     reason: (finalDecision.reasoning || '').substring(0, 200)
                 });
+            } else {
+                console.error(`❌ 卖出失败:`, tradeResult.error || 'Unknown error', tradeResult);
+                return;
             }
         }
 

@@ -213,13 +213,12 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
             }
         }
 
-        // 🎯 设置杠杆（如果自动放大了倍数，需要使用更高的杠杆�?
+        // 🎯 设置杠杆（如果自动放大了倍数，需要使用更高的杠杆）
         try {
             console.log(`🔧 Setting leverage to ${effectiveLeverage}x for ${symbol}...`);
-            await (client as any).changeInitialLeverage(binanceSymbol, {
-                leverage: effectiveLeverage,
-            });
-            console.log(`�?Leverage set successfully: ${effectiveLeverage}x`);
+            // Binance SDK 方法签名: changeInitialLeverage(symbol, options)
+            await (client as any).changeInitialLeverage(binanceSymbol, effectiveLeverage);
+            console.log(`✅ Leverage set successfully: ${effectiveLeverage}x`);
         } catch (leverageError: any) {
             const errorMsg = leverageError?.response?.data?.msg || leverageError.message;
             console.warn(`⚠️ Failed to set leverage: ${errorMsg}`);
@@ -242,9 +241,10 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
 
         console.log(`🎯 Final order quantity: ${finalQuantity} ${symbol} (precision: ${finalPrecisionConfig.quantity} decimals)`);
 
-        // �🔧 orderParams 只包含额外参数，不包含 symbol/side/type（这些通过函数参数传递）
+        // 🔧 orderParams 只包含额外参数，不包含 symbol/side/type（这些通过函数参数传递）
         const orderParams: any = {
             quantity: finalQuantity.toString(),
+            newOrderRespType: 'RESULT', // 获取完整的成交信息
         };
 
         // Only set positionSide for DUAL_SIDE mode (双向持仓)
@@ -256,9 +256,14 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
             console.log(`📍 Using ONE_WAY mode (no positionSide parameter)`);
         }
 
+        // 限价单和市价单的参数不同
         if (price) {
+            // 限价单需要价格和 timeInForce
             orderParams.price = price.toString();
             orderParams.timeInForce = "GTC"; // Good Till Cancelled
+        } else {
+            // 市价单不需要 timeInForce，但有些交易所需要明确 reduceOnly=false
+            orderParams.reduceOnly = false;
         }
 
         console.log(`📝 Creating ${orderType} buy order: ${finalQuantity} ${symbol} (original: ${amount}) at ${price || 'market price'} with ${effectiveLeverage}x leverage`);
@@ -343,9 +348,47 @@ export async function buy(params: BuyParams): Promise<BuyResult> {
             throw lastError || new Error("Failed to create order after 3 attempts");
         }
 
-        console.log(`�?Buy order created successfully:`, orderResult);
+        console.log(`✅ Buy order created successfully:`, orderResult);
 
-        // 🛡�?自动设置止盈止损
+        // 检查订单是否真正成交
+        if (orderResult.status === 'NEW' && parseFloat(orderResult.executedQty || '0') === 0) {
+            console.warn(`⚠️ Warning: Order created but not executed yet`);
+            console.warn(`   Order status: ${orderResult.status}`);
+            console.warn(`   Executed quantity: ${orderResult.executedQty}`);
+            console.warn(`   This may indicate a pending order rather than immediate execution`);
+
+            // 对于市价单，这种情况不正常，应该立即成交
+            if (orderType === 'MARKET') {
+                console.error(`❌ Market order should execute immediately but shows 0 executedQty`);
+                console.error(`   This might be due to insufficient liquidity or API issues`);
+
+                // 等待3秒后查询订单状态
+                console.log(`⏳ Waiting 3 seconds to check order status...`);
+                await new Promise(resolve => setTimeout(resolve, 3000));
+
+                try {
+                    const orderStatus = await (client as any).getOrder(binanceSymbol, {
+                        orderId: orderResult.orderId
+                    });
+                    console.log(`📊 Order status update:`, orderStatus.data);
+
+                    if (orderStatus.data.status === 'FILLED') {
+                        console.log(`✅ Order filled after initial check`);
+                        orderResult = orderStatus.data; // 更新为最新状态
+                    } else if (orderStatus.data.status === 'CANCELED' || orderStatus.data.status === 'REJECTED') {
+                        console.error(`❌ Order was ${orderStatus.data.status}`);
+                        return {
+                            success: false,
+                            error: `Order ${orderStatus.data.status}: ${orderStatus.data.status}`
+                        };
+                    }
+                } catch (statusError) {
+                    console.warn(`⚠️ Failed to check order status:`, statusError);
+                }
+            }
+        }
+
+        // 🛡️自动设置止盈止损
         if (autoSetStopLoss) {
             console.log(`\n🛡�?Setting automatic stop loss and take profit...`);
 

@@ -19,6 +19,14 @@ export interface MarketState {
   current_macd: number;
   current_rsi: number;
 
+  // 24h Statistics (新增)
+  price_change_percentage_24h?: number;
+  price_change_24h?: number;
+  high_24h?: number;
+  low_24h?: number;
+  total_volume?: number;
+  market_cap?: number;
+
   // Open Interest
   open_interest: {
     latest: number;
@@ -258,8 +266,30 @@ export async function getCurrentMarketState(
     // Fetch open interest and funding rate for perpetual futures
     const openInterestData = { latest: 0, average: 0 };
     let fundingRate = 0;
+    let ticker24h = {
+      priceChangePercent: 0,
+      priceChange: 0,
+      highPrice: 0,
+      lowPrice: 0,
+      volume: 0,
+      quoteVolume: 0
+    };
 
     try {
+      // 24h Ticker Statistics
+      const tickerUrls = baseHosts.map(
+        (host) => `${host}/fapi/v1/ticker/24hr?symbol=${perpSymbol}`
+      );
+      const tickerJson = await withRetry(() => fetchJson<any>(tickerUrls));
+      ticker24h = {
+        priceChangePercent: tickerJson?.priceChangePercent ? Number(tickerJson.priceChangePercent) : 0,
+        priceChange: tickerJson?.priceChange ? Number(tickerJson.priceChange) : 0,
+        highPrice: tickerJson?.highPrice ? Number(tickerJson.highPrice) : 0,
+        lowPrice: tickerJson?.lowPrice ? Number(tickerJson.lowPrice) : 0,
+        volume: tickerJson?.volume ? Number(tickerJson.volume) : 0,
+        quoteVolume: tickerJson?.quoteVolume ? Number(tickerJson.quoteVolume) : 0
+      };
+
       // Open Interest
       const oiUrls = baseHosts.map(
         (host) => `${host}/fapi/v1/openInterest?symbol=${perpSymbol}`
@@ -276,7 +306,7 @@ export async function getCurrentMarketState(
       const frJson = await withRetry(() => fetchJson<{ lastFundingRate?: string }>(frUrls));
       fundingRate = frJson?.lastFundingRate ? Number(frJson.lastFundingRate) : 0;
     } catch (error) {
-      console.warn("Could not fetch open interest or funding rate:", error);
+      console.warn("Could not fetch ticker/open interest/funding rate:", error);
       // Continue with default values
     }
 
@@ -313,6 +343,13 @@ export async function getCurrentMarketState(
       current_ema20,
       current_macd,
       current_rsi,
+      // 24h Statistics
+      price_change_percentage_24h: ticker24h.priceChangePercent,
+      price_change_24h: ticker24h.priceChange,
+      high_24h: ticker24h.highPrice,
+      low_24h: ticker24h.lowPrice,
+      total_volume: ticker24h.quoteVolume, // 以USDT计价的成交量
+      market_cap: current_price * openInterestData.latest, // 简化估算：价格 × 持仓量
       open_interest: openInterestData,
       funding_rate: fundingRate,
       intraday: {

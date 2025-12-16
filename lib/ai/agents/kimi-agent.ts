@@ -196,8 +196,8 @@ ${(pdfDocs.moodAnalysis || '无情绪面分析').substring(0, 1000)}...
 
         for (let attempt = 0; attempt <= this.maxRetries; attempt++) {
             try {
-                // 使用 HTTP 代理（如果配置）
-                const proxyUrl = process.env.HTTP_PROXY || process.env.http_proxy;
+                // 使用代理（优先 HTTPS_PROXY，其次 HTTP_PROXY）
+                const proxyUrl = process.env.HTTPS_PROXY || process.env.HTTP_PROXY || process.env.http_proxy;
                 const fetchOptions: RequestInit = {
                     method: 'POST',
                     headers: {
