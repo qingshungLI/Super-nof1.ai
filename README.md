@@ -378,13 +378,8 @@ npx prisma studio
 
 ```bash
 # 开发模式启动
-npm run dev
+npm run dev：all
 
-# 或使用 yarn
-yarn dev
-
-# 或使用 pnpm
-pnpm dev
 ```
 
 **启动成功后**：
